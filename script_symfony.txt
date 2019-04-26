@@ -1,0 +1,41 @@
+==========================================================
+=========================STEP  SYMFONY 4.2==========
+==========================================================
+
+
+composer require asset
+composer require encore
+php bin/console cache:clear --no-warmup --env=prod
+php bin/console cache:clear --no-warmup -e prod composer require --dev profiler
+composer require server
+composer require --dev profiler
+composer require annotations 
+composer require twigcomposer require encore
+yarn install
+yarn add sass-loader node-sass --dev
+composer require asset
+yarn add bootstrap --dev
+yarn run encore dev
+
+
+
+
+==========================================================
+=========================cmd SYMFONY 4.2==========
+==========================================================
+
+
+php bin/console cache:clear --no-warmup --env=prod
+php bin/console cache:clear --no-warmup -e prod 
+
+yarn run encore dev
+
+
+
+
+
+
+
+
+
+
