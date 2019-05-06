@@ -113,6 +113,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
         success: function (data) {
             if (data.registred) {
 
+                sendTracking_Api(Userip,ID_google_analytic)
+
                 localStorage.setItem('source', source);
                 localStorage.setItem('id', data.id);
                 localStorage.setItem('age', age);

@@ -35,12 +35,11 @@ function sendAdConversion_Api(Id_adword_conversion) {
 //---------EVENT conversion-------
 
 
-$('.telecharger').click(function () {
+// $('.telecharger').click(function () {
 
 
-    sendTracking_Api(Userip,ID_google_analytic)
 
-})
+// })
 
 
 
