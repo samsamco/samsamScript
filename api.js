@@ -28,7 +28,14 @@ function sendTracking_Api(Userip,ID_google_analytic) {
 
 function sendAdConversion_Api(Id_adword_conversion) {
 
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', '{{ Id_adword_conversion }}');
     gtag('event', 'conversion', {'send_to': Id_adword_conversion});
+
 
 }
 
