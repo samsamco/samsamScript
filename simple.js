@@ -339,7 +339,7 @@ function validersms(newcode) {
 }
 
 
-// require('../js/jquery.inputmask.bundle');
+require('jquery.inputmask.bundle');
 
 
 $(document).ready(function () {
