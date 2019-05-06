@@ -1,4 +1,4 @@
-//---------tracking-------
+//---------tracking------
 
 function sendTracking_Api(Userip,ID_google_analytic) {
 
