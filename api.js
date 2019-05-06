@@ -24,7 +24,6 @@ function sendTracking_Api(Userip,ID_google_analytic) {
 
 
 
-
 //---------Adword conversion-------
 
 function sendAdConversion_Api(Id_adword_conversion) {
