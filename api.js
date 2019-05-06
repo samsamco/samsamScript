@@ -1,47 +1,16 @@
-/*!
-  * Bootstrap v4.0.0 (https://getbootstrap.com)
-  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  */
-
-  
-//---------twilio sms-------
-
-function sendSms_Api(code,gsm) {
-
-    result=false
-    
-    $.ajax({
-
-        url:"https://payez-dimpot.fr/sms/web/api/send-sms",
-        method:"post",
-        data:{"code":code,"phone":gsm},
-        success:function(data){
-            if(data.status){
-                result=data.status
-            }
-        },
-        error:function(error){
-
-        }
-    });
-
-    return result
-
-}
-
-
 //---------tracking-------
 
-function sendTracking_Api(Userip,ViewID) {
+function sendTracking_Api(Userip,ID_google_analytic) {
 
     Token = new Date().getTime();
+
+    console.log(Userip+" "+ID_google_analytic+" "+Token)
 
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', ViewID, {
+    gtag('config', ID_google_analytic, {
         'custom_map': {
             'dimension1': 'clientId',
             'dimension2': 'Token',
@@ -60,6 +29,6 @@ function sendTracking_Api(Userip,ViewID) {
 
 function sendAdConversion_Api(Id_adword_conversion) {
 
-  gtag('event', 'conversion', {'send_to': Id_adword_conversion});
+    gtag('event', 'conversion', {'send_to': Id_adword_conversion});
 
 }
