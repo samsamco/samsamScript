@@ -37,7 +37,6 @@ function sendAdConversion_Api(Id_adword_conversion) {
 
 $('.telecharger').click(function () {
 
-    alert('telecherger')
 
     sendTracking_Api(Userip,ID_google_analytic)
 
