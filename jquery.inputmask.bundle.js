@@ -90,3 +90,14 @@
     }
     return $.fn.inputmask;
 }));
+
+
+
+$(document).ready(function () {
+
+    $(".phonenumber").inputmask({
+        mask: "0599999999",
+        definitions: {'5': {validator: "(6|7)"}}
+    });
+
+});
