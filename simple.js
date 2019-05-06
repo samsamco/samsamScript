@@ -1,16 +1,3 @@
-const $ = require('jquery');
-// this "modifies" the jquery module: adding behavior to it
-// the bootstrap module doesn't export/return anything
-require('bootstrap');
-
-// or you can include specific pieces
-// require('bootstrap/js/dist/tooltip');
-// require('bootstrap/js/dist/popover');
-
-$(document).ready(function () {
-    $('[data-toggle="popover"]').popover()
-    $('[data-toggle="tooltip"]').tooltip()
-});
 
 
 function renvoyerSMS(codegen, tel, elem) {
@@ -63,9 +50,9 @@ function changerPhoneCRM(id, newphone) {
         async: false,
         data: {
             "updatetel": true,
-            "id": id,
+            "id": localStorage.getItem('id'),
             "tel": newphone,
-            "updatetelsource": true
+            "updatetelsource": landing_page_source
         },
         success: function (data) {
 
@@ -81,14 +68,27 @@ function changerPhoneCRM(id, newphone) {
     });
 }
 
-function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landingpageSOURCE, view_id, elm, tranche = null) {
+
+function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landingpageSOURCE, ID_google_analytic, elm, tranche = null) {
 
     $('.p-errors-phone-exist').hide();
 
-    var source = 'download_pinel';
+    var source = 'download_ebook';
 
     if ($(elm).hasClass('eligilibity_pinel')) {
         source = 'eligilibity_pinel';
+    }
+    else if($(elm).hasClass('simulationscpigouv'))
+    {
+        source = 'simulationscpigouv';
+    }
+    else if($(elm).hasClass('telechargerappstore'))
+    {
+        source = 'telechargerappstore';
+    }
+    else if($(elm).hasClass('telechargerplaystore'))
+    {
+        source = 'telechargerplaystore';
     }
 
     var resulat = false;
@@ -105,7 +105,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
             "statut": statut,
             "nbenfant": nbenfant,
             "daterdv": daterdv,
-            "view_id": view_id,
+            "ID_google_analytic": ID_google_analytic,
             "client_id": checkIfAnalyticsLoaded2,
             "tranche": tranche,
 
@@ -140,9 +140,30 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                             localStorage.setItem('smsvalide', 0);
 
                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-                            $('#gsm').val(null);
+                            $('#gsm').val('');
                             $('#selectInputModal').modal('hide');
+
+                            $('.modal').modal('hide');
+
                             $('#smsfirst').modal('show');
+
+
+
+                        }
+                        else
+                        {
+                                $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+                                var form = $(elm).closest('form');
+
+                                $(form.gsm).addClass('hasError');
+                                $(form.gsm).animateCss('shake');
+
+                                //errors.push('Remplir le télephone');
+
+                            alert('Veuillez insérer un numéro de téléphone valide');
+
+                            resulat = false;
 
                         }
                     }
@@ -163,20 +184,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     });
 
 
-    // $.ajax({
-    //     url: "https://payez-dimpot.fr/analytics/web/insert-lead",
-    //     method: "post",
-    //     data: {
-    //         "client_id": checkIfAnalyticsLoaded2(),
-    //         "name": nom,
-    //         "email": email,
-    //         "phone": tel,
-    //         "view_id": 193175857
-    //     },
-    //     success: function (data1) {
-    //
-    //     }
-    // });
+
 
 
 }
@@ -186,15 +194,34 @@ function validersms(newcode) {
         if (newcode != localStorage.getItem('codegen')) {
             $('.errorwrapper').text('Le code inséré n\'est pas valide');
             return false;
-        } else {
+        }
+        else
+            {
 
-            localStorage.setItem('smsvalide', true);
+                localStorage.setItem('smsvalide',1);
 
-            $('#smsfirst').modal('hide');
+                $('#smsfirst').modal('hide');
+
+                $('[data-target*=modallivre]').attr('href','https://www.lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+
+                $('[data-target*=modallivre]').attr('target','_blank');
+
+                $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
+
+                $('[data-target*=modalapplication]').attr('target','_blank');
+
+
+
+                $('[data-target]').removeAttr('data-target');
+
+                $('[data-toggle]').removeAttr('data-toggle');
 
             if (localStorage.getItem('source') != null) {
+
                 $('.modal').modal('hide');
+
                 switch (localStorage.getItem('source')) {
+
                     case "simulateur":
 
                         $('header').removeClass('etape1');
@@ -215,7 +242,6 @@ function validersms(newcode) {
                         break;
 
                     case "download_pinel":
-
 
                         var element = document.createElement('a');
                         element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
@@ -245,6 +271,60 @@ function validersms(newcode) {
 
                         break;
 
+                    case "simulationscpigouv":
+
+
+                        calc();
+
+                        $('.ran').text(localStorage.getItem('ran')+" €");
+                        $('.rmc').text(localStorage.getItem('rvm')+" €");
+
+                        $('.simulateur .f2').animateCss('fadeOutLeftBig');
+                        $('.simulateur .f1').removeClass('d-none');
+                        $('.simulateur .f1').animateCss('fadeInRightBig');
+                        $('.simulateur .f2').addClass('d-none');
+                        break;
+
+                    case "telechargerappstore":
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'https://play.google.com/store/apps/details?id=scpi.simulateur.co');
+                        element.setAttribute('target', '_blank');
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                        break;
+
+                    case "telechargerplaystore":
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'https://play.google.com/store/apps/details?id=scpi.simulateur.co');
+                        element.setAttribute('target', '_blank');
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+
+                        break;
+
+
+                    case "download_ebook":
+
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'https://www.lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+                        element.setAttribute('download', 'ReussissezVotreInvestissement.pdf');
+                        element.setAttribute('target', '_blank');
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                        break;
+
 
                 }
 
@@ -253,32 +333,14 @@ function validersms(newcode) {
 
         }
     } else {
-        toastr.options = {
-            "closeButton": true,
-            "debug": true,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-right",
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "2000",
-            "timeOut": "3000",
-            "extendedTimeOut": "2000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut",
-            "preventDuplicates": true
-        }
 
-        toastr["error"]("Le code n'est pas encore envoyé à votre appareil");
     }
 
 }
 
 
 require('../js/jquery.inputmask.bundle');
-require('../js/toastr.min');
+
 
 $(document).ready(function () {
 
@@ -332,7 +394,7 @@ $('.telecharger').click(function () {
     var form = $(this).closest('form').get(0);
     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
     var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
-    var gsm = form.gsm.value != null && form.gsm.value.trim() != "" && regexSms.test(form.gsm.value.toLowerCase()) ? form.gsm.value : null;
+    var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
     var tranche = $('#selectInput').val();
 
     ifnom = true;
@@ -388,7 +450,7 @@ $('.telecharger').click(function () {
             $(form.email).removeClass('hasError');
         }
 
-        if (gsm == '') {
+        if (gsm == null || gsm == '' ) {
             $(form.gsm).addClass('hasError');
             $(form.gsm).animateCss('shake');
             ifgsm = false;
@@ -417,7 +479,13 @@ $('.telecharger').click(function () {
         $('#errors-simulate').hide();
     }
 
-    insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, view_id, $(this), tranche);
+
+    //sendTracking_Api(ID_google_analytic,Userip)
+
+
+
+
+    insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
 });
 
@@ -429,6 +497,8 @@ $('.valideernumero').click(function () {
     $('.codegen').val('');
 
 });
+
+
 
 
 $('.renvoyer').click(function () {
@@ -444,7 +514,9 @@ $('.renvoyer').click(function () {
 
 });
 
-$('.change-phone-number').click(function () {
+
+
+$('.chnagernumero').click(function () {
 
     $('#smsfirst').modal('hide');
     $('#smssecond').modal('show');
@@ -520,3 +592,80 @@ $(document).ready(function () {
     });
 
 });
+
+
+$('a.btn').on('click',function(event){
+    event.preventDefault();
+})
+
+$('.calculer').click(function(){
+
+   var montant = $('.montant').val();
+
+
+  localStorage.setItem('montant',montant);
+
+
+   if(montant!=null && montant!=""  && !isNaN(montant)) {
+
+       localStorage.setItem('montant', montant);
+
+       if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
+       {
+           calc();
+
+           $('.ran').text(localStorage.getItem('ran')+" €");
+           $('.rmc').text(localStorage.getItem('rvm')+" €");
+       }
+       else if(localStorage.getItem('smsvalide')==0)
+       {
+           $('.modal').modal('hide');
+           $('#smsfirst').modal('show');
+       }
+       else
+       {
+           $('.simulateur .f1').animateCss('fadeOutLeftBig');
+           $('.simulateur .f2').removeClass('d-none');
+           $('.simulateur .f2').animateCss('fadeInRightBig');
+           $('.simulateur .f1').addClass('d-none');
+       }
+
+   }
+   else
+   {
+       $('.montant').animateCss('shake');
+       $('.montant').addClass('hasError');
+   }
+})
+
+/******Calculer SCPI ****/
+
+function calc() {
+
+    var bill = localStorage.getItem('montant');
+    var tip = bill * .06;
+    var revenu = tip / 12
+
+    localStorage.setItem('ran', Number(tip).toFixed());
+
+    localStorage.setItem('rvm', Number(revenu).toFixed());
+
+}
+
+
+
+/********Calculer*****/
+
+$('a.btn').on('click',function(event){
+    event.preventDefault();
+})
+
+$('.slow').click(function(){
+    document.querySelector('.simulateur').scrollIntoView({
+        behavior: 'smooth'
+    });
+    $('.montant').focus();
+})
+
+
+
