@@ -40,9 +40,7 @@ $('.telecharger').click(function () {
 
     alert('telecherger')
 
-
     sendTracking_Api(Userip,ID_google_analytic)
-
 
 })
 
