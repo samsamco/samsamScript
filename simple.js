@@ -276,6 +276,9 @@ function validersms(newcode) {
                         console.log('smsmsms')
                         $('[data-toggle=modal]').removeAttr('data-target');
                         $('[data-toggle=modal]').removeAttr('data-toggle');
+                        $('.modalebook').addClass('directDownload');
+
+
 
                         var element = document.createElement('a');
                         element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
