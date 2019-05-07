@@ -75,7 +75,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
     var source = 'none';
 
-    
+    console.log($(elm))    
 
     if ($(elm).hasClass('download_pinel')) {
         source = 'download_pinel';
