@@ -73,8 +73,13 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
     $('.p-errors-phone-exist').hide();
 
-    var source = 'download_ebook';
+    var source = 'none';
 
+    
+
+    if ($(elm).hasClass('download_pinel')) {
+        source = 'download_pinel';
+    }
     if ($(elm).hasClass('eligilibity_pinel')) {
         source = 'eligilibity_pinel';
     }
@@ -271,7 +276,7 @@ function validersms(newcode) {
                         console.log('smsmsms')
                         $('[data-toggle=modal]').removeAttr('data-target');
                         $('[data-toggle=modal]').removeAttr('data-toggle');
-                        
+
                         var element = document.createElement('a');
                         element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
                         element.setAttribute('download', 'Guide-loi-Pinel.pdf');
