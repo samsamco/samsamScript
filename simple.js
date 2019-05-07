@@ -6,7 +6,7 @@ function renvoyerSMS(codegen, tel, elem) {
     $.ajax({
         url: "https://payez-dimpot.fr/sms/web/api/send-sms",
         method: "post",
-        async: false,
+        async: true,
         data: {"code": codegen, "phone": tel.replace(/^0/gi, "+33")},
         success: function (data) {
             if (data.status) {
@@ -47,7 +47,7 @@ function changerPhoneCRM(id, newphone) {
     $.ajax({
         url: "https://labanquedelimmobilier.net/landing/leadpinel.php",
         type: "post",
-        async: false,
+        async: true,
         data: {
             "updatetel": true,
             "id": localStorage.getItem('id'),
@@ -95,7 +95,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     $.ajax({
         url: "https://labanquedelimmobilier.net/landing/leadpinel.php",
         type: "post",
-        async: false,
+        async: true,
         data: {
             "from": landingpageSOURCE,
             "nom": nom,
@@ -271,7 +271,7 @@ function validersms(newcode) {
                         console.log('smsmsms')
                         $('[data-toggle=modal]').removeAttr('data-target');
                         $('[data-toggle=modal]').removeAttr('data-toggle');
-
+                        
                         var element = document.createElement('a');
                         element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
                         element.setAttribute('download', 'Guide-loi-Pinel.pdf');
@@ -282,6 +282,7 @@ function validersms(newcode) {
                         document.body.removeChild(element);
 
                         // if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null && localStorage.getItem('smsvalide') != null) {
+
                         // }
 
                         break;
@@ -304,6 +305,7 @@ function validersms(newcode) {
                         break;
 
                     case "simulationscpigouv":
+
 
                         calc();
 
