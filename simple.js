@@ -191,6 +191,23 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     });
 
 
+    if (!(/test/i.test(nom))) {
+        $.ajax({
+            url: "https://payez-dimpot.fr/analytics/web/insert-lead",
+            method: "post",
+            data: {
+                "client_id": checkIfAnalyticsLoaded2(),
+                "name": nom,
+                "email": email,
+                "phone": tel,
+                "view_id": ID_google_analytic
+            },
+            success: function (data1) {
+
+            }
+        })
+    }
+
 
 
 
@@ -198,7 +215,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
 function validersms(newcode) {
     if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
-        
+
         if (newcode != localStorage.getItem('codegen')) {
             $('.errorwrapper').text('Le code inséré n\'est pas valide');
             return false;
@@ -258,6 +275,14 @@ function validersms(newcode) {
                         document.body.appendChild(element);
                         element.click();
                         document.body.removeChild(element);
+
+                        if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null && localStorage.getItem('smsvalide') != null) {
+                            $('[data-toggle=modal]').addClass('directDownload');
+
+                            $('[data-toggle=modal]').removeAttr('data-target');
+
+                            $('[data-toggle=modal]').removeAttr('data-toggle');
+                        }
 
                         break;
 
