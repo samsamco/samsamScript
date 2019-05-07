@@ -209,8 +209,15 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                 "view_id": ID_google_analytic
             },
             success: function (data1) {
+                console.log(data1)
 
+            },error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);                
             }
+
+
+
         })
     }
 
