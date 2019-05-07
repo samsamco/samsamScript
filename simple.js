@@ -152,6 +152,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                             console.log("is show")
 
+                            $('#smsfirst').modal();
                             $('#smsfirst').modal('show');
 
 
