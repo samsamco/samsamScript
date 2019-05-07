@@ -276,14 +276,14 @@ function validersms(newcode) {
                         element.click();
                         document.body.removeChild(element);
 
-                        if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null ) {
+                        // if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null && localStorage.getItem('smsvalide') != null) {
                             $('[data-toggle=modal]').addClass('directDownload');
                             console.log('smsmsms')
 
                             $('[data-toggle=modal]').removeAttr('data-target');
 
                             $('[data-toggle=modal]').removeAttr('data-toggle');
-                        }
+                        // }
 
                         break;
 
