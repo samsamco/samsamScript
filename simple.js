@@ -198,12 +198,12 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
 function validersms(newcode) {
     if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
+        
         if (newcode != localStorage.getItem('codegen')) {
             $('.errorwrapper').text('Le code inséré n\'est pas valide');
             return false;
-        }
-        else
-            {
+        
+        }else{
 
                 localStorage.setItem('smsvalide',1);
 
