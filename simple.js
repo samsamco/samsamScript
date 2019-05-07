@@ -147,6 +147,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                             // $('#selectInputModal').modal('hide');
 
                             $('.modal').modal('hide');
+                            console.log("is show")
 
                             $('#smsfirst').modal('show');
 
