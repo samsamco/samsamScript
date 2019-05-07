@@ -144,9 +144,12 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
                             $('#gsm').val('');
-                            // $('#selectInputModal').modal('hide');
-
+                            
                             $('.modal').modal('hide');
+
+                            $('#selectInputModal').modal('hide');
+                            $('#selectInputModal').removeClass('show');
+
                             console.log("is show")
 
                             $('#smsfirst').modal('show');
