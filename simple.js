@@ -267,6 +267,11 @@ function validersms(newcode) {
 
                     case "download_pinel":
 
+                        $('[data-toggle=modal]').addClass('directDownload');
+                        console.log('smsmsms')
+                        $('[data-toggle=modal]').removeAttr('data-target');
+                        $('[data-toggle=modal]').removeAttr('data-toggle');
+
                         var element = document.createElement('a');
                         element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
                         element.setAttribute('download', 'Guide-loi-Pinel.pdf');
@@ -277,12 +282,6 @@ function validersms(newcode) {
                         document.body.removeChild(element);
 
                         // if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null && localStorage.getItem('smsvalide') != null) {
-                            $('[data-toggle=modal]').addClass('directDownload');
-                            console.log('smsmsms')
-
-                            $('[data-toggle=modal]').removeAttr('data-target');
-
-                            $('[data-toggle=modal]').removeAttr('data-toggle');
                         // }
 
                         break;
@@ -738,5 +737,5 @@ function isNumber(evt) {
         return false;
 
     return true;
-    
+
 }   
