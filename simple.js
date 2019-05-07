@@ -152,7 +152,6 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                             $('#smsfirst').modal('show');
 
 
-
                         }
                         else
                         {
