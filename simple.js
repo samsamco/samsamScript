@@ -276,7 +276,7 @@ function validersms(newcode) {
                         element.click();
                         document.body.removeChild(element);
 
-                        if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null && localStorage.getItem('smsvalide') != null) {
+                        if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null ) {
                             $('[data-toggle=modal]').addClass('directDownload');
                             console.log('smsmsms')
 
