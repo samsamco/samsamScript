@@ -624,7 +624,6 @@ $(document).on("click",".directDownload",function(event){
 
 
 
-
 $('a.btn').on('click',function(event){
     event.preventDefault();
 })
