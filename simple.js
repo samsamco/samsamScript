@@ -609,9 +609,8 @@ $('.next1').on('click', function () {
     $(this).closest('section').hide();
 });
 
-$(document).ready(function () {
 
-    $('.directDownload').click(function () {
+$('.directDownload').click(function () {
 
         var element = document.createElement('a');
         element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
@@ -624,7 +623,7 @@ $(document).ready(function () {
 
     });
 
-});
+
 
 
 $('a.btn').on('click',function(event){
