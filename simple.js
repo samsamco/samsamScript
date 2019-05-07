@@ -14,7 +14,7 @@ function renvoyerSMS(codegen, tel, elem) {
             }
         }
     }).done(function (data) {
-        console.log(data);
+        //console.log(data);
         if (data.status) {
             localStorage.setItem('codegen', codegen);
             localStorage.setItem('tel', tel);
@@ -75,7 +75,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
     var source = 'none';
 
-    console.log($(elm))    
+    //console.log($(elm))    
 
     if ($(elm).hasClass('download_pinel')) {
         source = 'download_pinel';
@@ -134,7 +134,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                 localStorage.setItem('codegen', codegen);
 
-                console.log(codegen);
+                //console.log(codegen);
 
                 $.ajax({
                     url: "https://payez-dimpot.fr/sms/web/api/send-sms",
@@ -156,7 +156,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                             $('#modalebook').modal('hide');
                             // $('#selectInputModal').removeClass('show');
 
-                            console.log("is show")
+                            //console.log("is show")
 
                             $('#smsfirst').modal();
                             $('#smsfirst').modal('show');
@@ -188,7 +188,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                 $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
 
-                console.log(data);
+                //console.log(data);
 
                 resulat = false;
 
@@ -274,7 +274,7 @@ function validersms(newcode) {
                     case "download_pinel":
 
                         $('[data-toggle=modal]').addClass('directDownload');
-                        console.log('smsmsms')
+                        //console.log('smsmsms')
                         $('[data-toggle=modal]').removeAttr('data-target');
                         $('[data-toggle=modal]').removeAttr('data-toggle');
                         $('.modalebook').addClass('directDownload');
@@ -300,7 +300,7 @@ function validersms(newcode) {
 
                         $('#selectInputModal').modal('hide');
 
-                        console.log($('#selectInput').val());
+                        //console.log($('#selectInput').val());
                         if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
                             $('#not-eligible').show();
                             $('#eligible').hide();
@@ -701,8 +701,8 @@ $('.slow').click(function(){
 
 $('#selectInput').change(function () {
 
-    console.log(localStorage.getItem('id'));
-    console.log(localStorage.getItem('smsvalide'));
+    //console.log(localStorage.getItem('id'));
+    //console.log(localStorage.getItem('smsvalide'));
 
     if ($(this).val() != 0) {
 
