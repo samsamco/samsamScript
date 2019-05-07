@@ -668,3 +668,67 @@ $('.slow').click(function(){
 
 
 
+$('#selectInput').change(function () {
+
+    console.log(localStorage.getItem('id'));
+    console.log(localStorage.getItem('smsvalide'));
+
+    if ($(this).val() != 0) {
+
+    if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
+
+    if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
+    $('#not-eligible').show();
+    $('#eligible').hide();
+    } else {
+    $('#not-eligible').hide();
+    $('#eligible').show();
+    }
+
+    $('#response_eligibility').modal('show');
+
+    }
+
+    if((localStorage.getItem('id') == undefined || localStorage.getItem('id') == null) && localStorage.getItem('smsvalide') == undefined
+    ){
+
+    $("#selectInputModal").modal('show');
+
+    }
+
+    if(localStorage.getItem('id') != undefined && localStorage.getItem('smsvalide') == 0){
+    $('#smsfirst').modal('show');
+
+    }
+
+    }
+
+});
+
+$('.prev1').on('click', function () {
+    $('#errors-simulate').hide();
+    $('#errors-simulate').html(null);
+    $('#selectInputModal').modal('hide');
+});
+
+$('.next1').on('click', function () {
+    $('#form-total-p-1').show();
+    $(this).closest('section').hide();
+});
+
+$(document).ready(function () {
+
+    $('.directDownload').click(function () {
+
+        var element = document.createElement('a');
+        element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
+        element.setAttribute('download', 'Guide-loi-Pinel.pdf');
+        element.setAttribute('target', '_blank');
+        element.style.display = 'none';
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+
+    });
+
+});
