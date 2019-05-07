@@ -652,7 +652,6 @@ function calc() {
 }
 
 
-
 /********Calculer*****/
 
 $('a.btn').on('click',function(event){
