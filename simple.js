@@ -609,19 +609,18 @@ $('.next1').on('click', function () {
     $(this).closest('section').hide();
 });
 
+$(document).on("click",".directDownload",function(event){
 
-$('.directDownload').click(function () {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
+    element.setAttribute('download', 'Guide-loi-Pinel.pdf');
+    element.setAttribute('target', '_blank');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 
-        var element = document.createElement('a');
-        element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
-        element.setAttribute('download', 'Guide-loi-Pinel.pdf');
-        element.setAttribute('target', '_blank');
-        element.style.display = 'none';
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-
-    });
+});
 
 
 
