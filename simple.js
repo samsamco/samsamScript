@@ -209,7 +209,7 @@ function validersms(newcode) {
 
                 $('#smsfirst').modal('hide');
 
-                $('[data-target*=modallivre]').attr('href','https://www.lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+                $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
 
                 $('[data-target*=modallivre]').attr('target','_blank');
 
@@ -322,7 +322,7 @@ function validersms(newcode) {
 
 
                         var element = document.createElement('a');
-                        element.setAttribute('href', 'https://www.lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+                        element.setAttribute('href', 'https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
                         element.setAttribute('download', 'ReussissezVotreInvestissement.pdf');
                         element.setAttribute('target', '_blank');
                         element.style.display = 'none';
