@@ -69,131 +69,131 @@ function changerPhoneCRM(id, newphone) {
 }
 
 
-function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landingpageSOURCE, ID_google_analytic, elm, tranche = null) {
+// function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landingpageSOURCE, ID_google_analytic, elm, tranche = null) {
 
-    $('.p-errors-phone-exist').hide();
+//     $('.p-errors-phone-exist').hide();
 
-    var source = 'download_ebook';
+//     var source = 'download_ebook';
 
-    if ($(elm).hasClass('eligilibity_pinel')) {
-        source = 'eligilibity_pinel';
-    }
-    else if($(elm).hasClass('simulationscpigouv'))
-    {
-        source = 'simulationscpigouv';
-    }
-    else if($(elm).hasClass('telechargerappstore'))
-    {
-        source = 'telechargerappstore';
-    }
-    else if($(elm).hasClass('telechargerplaystore'))
-    {
-        source = 'telechargerplaystore';
-    }
+//     if ($(elm).hasClass('eligilibity_pinel')) {
+//         source = 'eligilibity_pinel';
+//     }
+//     else if($(elm).hasClass('simulationscpigouv'))
+//     {
+//         source = 'simulationscpigouv';
+//     }
+//     else if($(elm).hasClass('telechargerappstore'))
+//     {
+//         source = 'telechargerappstore';
+//     }
+//     else if($(elm).hasClass('telechargerplaystore'))
+//     {
+//         source = 'telechargerplaystore';
+//     }
 
-    var resulat = false;
-    $.ajax({
-        url: "https://labanquedelimmobilier.net/landing/leadpinel.php",
-        type: "post",
-        async: false,
-        data: {
-            "from": landingpageSOURCE,
-            "nom": nom,
-            "tel": tel,
-            "email": email,
-            "age": age,
-            "statut": statut,
-            "nbenfant": nbenfant,
-            "daterdv": daterdv,
-            "ID_google_analytic": ID_google_analytic,
-            "client_id": checkIfAnalyticsLoaded2,
-            "tranche": tranche,
+//     var resulat = false;
+//     $.ajax({
+//         url: "https://labanquedelimmobilier.net/landing/leadpinel.php",
+//         type: "post",
+//         async: false,
+//         data: {
+//             "from": landingpageSOURCE,
+//             "nom": nom,
+//             "tel": tel,
+//             "email": email,
+//             "age": age,
+//             "statut": statut,
+//             "nbenfant": nbenfant,
+//             "daterdv": daterdv,
+//             "ID_google_analytic": ID_google_analytic,
+//             "client_id": checkIfAnalyticsLoaded2,
+//             "tranche": tranche,
 
-        },
-        success: function (data) {
-            if (data.registred) {
+//         },
+//         success: function (data) {
+//             if (data.registred) {
 
-                sendTracking_Api(Userip,ID_google_analytic)
-                sendAdConversion_Api(ID_google_Ad)
+//                 sendTracking_Api(Userip,ID_google_analytic)
+//                 sendAdConversion_Api(ID_google_Ad)
 
-                localStorage.setItem('source', source);
-                localStorage.setItem('id', data.id);
-                localStorage.setItem('age', age);
-                localStorage.setItem('nom', nom);
-                localStorage.setItem('statut', statut);
-                localStorage.setItem('nbenfant', nbenfant);
-                localStorage.setItem('email', email);
-                localStorage.setItem('tel', tel);
+//                 localStorage.setItem('source', source);
+//                 localStorage.setItem('id', data.id);
+//                 localStorage.setItem('age', age);
+//                 localStorage.setItem('nom', nom);
+//                 localStorage.setItem('statut', statut);
+//                 localStorage.setItem('nbenfant', nbenfant);
+//                 localStorage.setItem('email', email);
+//                 localStorage.setItem('tel', tel);
 
-                var codegen = Math.floor(1000 + Math.random() * 9000);
+//                 var codegen = Math.floor(1000 + Math.random() * 9000);
 
-                localStorage.setItem('codegen', codegen);
+//                 localStorage.setItem('codegen', codegen);
 
-                console.log(codegen);
+//                 console.log(codegen);
 
-                $.ajax({
-                    url: "https://payez-dimpot.fr/sms/web/api/send-sms",
-                    method: "post",
-                    data: {"code": codegen, "phone": tel.replace(/^0/gi, "+33")},
-                    success: function (data) {
-                        if (data.status) {
+//                 $.ajax({
+//                     url: "https://payez-dimpot.fr/sms/web/api/send-sms",
+//                     method: "post",
+//                     data: {"code": codegen, "phone": tel.replace(/^0/gi, "+33")},
+//                     success: function (data) {
+//                         if (data.status) {
 
-                            resulat = true;
-                            localStorage.setItem('smssent', 1);
-                            localStorage.setItem('smsvalide', 0);
+//                             resulat = true;
+//                             localStorage.setItem('smssent', 1);
+//                             localStorage.setItem('smsvalide', 0);
 
-                            $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-                            $('#gsm').val('');
+//                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+//                             $('#gsm').val('');
                             
-                            // $('.modal').modal('hide');
+//                             // $('.modal').modal('hide');
 
-                            $('#selectInputModal').modal('hide');
-                            // $('#selectInputModal').removeClass('show');
+//                             $('#selectInputModal').modal('hide');
+//                             // $('#selectInputModal').removeClass('show');
 
-                            console.log("is show")
+//                             console.log("is show")
 
-                            $('#smsfirst').modal('show');
-
-
-                        }
-                        else
-                        {
-                                $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-
-                                var form = $(elm).closest('form');
-
-                                $(form.gsm).addClass('hasError');
-                                $(form.gsm).animateCss('shake');
-
-                                //errors.push('Remplir le télephone');
-
-                            alert('Veuillez insérer un numéro de téléphone valide');
-
-                            resulat = false;
-
-                        }
-                    }
-                })
-
-            } else {
-
-                $('.p-errors-phone-exist').show();
-
-                $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-
-                console.log(data);
-
-                resulat = false;
-
-            }
-        }
-    });
+//                             $('#smsfirst').modal('show');
 
 
+//                         }
+//                         else
+//                         {
+//                                 $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+//                                 var form = $(elm).closest('form');
+
+//                                 $(form.gsm).addClass('hasError');
+//                                 $(form.gsm).animateCss('shake');
+
+//                                 //errors.push('Remplir le télephone');
+
+//                             alert('Veuillez insérer un numéro de téléphone valide');
+
+//                             resulat = false;
+
+//                         }
+//                     }
+//                 })
+
+//             } else {
+
+//                 $('.p-errors-phone-exist').show();
+
+//                 $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+//                 console.log(data);
+
+//                 resulat = false;
+
+//             }
+//         }
+//     });
 
 
 
-}
+
+
+// }
 
 function validersms(newcode) {
     if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
