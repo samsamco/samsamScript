@@ -305,7 +305,6 @@ function validersms(newcode) {
 
                     case "simulationscpigouv":
 
-
                         calc();
 
                         $('.ran').text(localStorage.getItem('ran')+" €");
