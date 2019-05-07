@@ -378,114 +378,114 @@ $.fn.extend({
 });
 
 
-$('.telecharger').click(function () {
+// $('.telecharger').click(function () {
 
-    if (!$(this).hasClass('has-icon')) {
-        $('#errors-simulate').html(null);
-        $('#errors-simulate').hide();
-    }
+//     if (!$(this).hasClass('has-icon')) {
+//         $('#errors-simulate').html(null);
+//         $('#errors-simulate').hide();
+//     }
 
-    var errors = [];
+//     var errors = [];
 
-    $(this).find('.spinner-border.spinner-border-sm').removeClass('d-none');
+//     $(this).find('.spinner-border.spinner-border-sm').removeClass('d-none');
 
-    var form = $(this).closest('form').get(0);
-    var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
-    var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
-    var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
-    var tranche = $('#selectInput').val();
+//     var form = $(this).closest('form').get(0);
+//     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
+//     var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
+//     var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
+//     var tranche = $('#selectInput').val();
 
-    ifnom = true;
-    ifemail = true;
-    ifgsm = true;
+//     ifnom = true;
+//     ifemail = true;
+//     ifgsm = true;
 
-    if ($(this).hasClass('has-icon')) {
+//     if ($(this).hasClass('has-icon')) {
 
-        if (nom == null || nom == '') {
-            $(form.nom).parent().addClass('hasError');
-            $(form.nom).parent().animateCss('shake');
-            ifnom = false;
-            errors.push('Remplir le nom');
-        } else {
-            $(form.nom).parent().removeClass('hasError');
-        }
+//         if (nom == null || nom == '') {
+//             $(form.nom).parent().addClass('hasError');
+//             $(form.nom).parent().animateCss('shake');
+//             ifnom = false;
+//             errors.push('Remplir le nom');
+//         } else {
+//             $(form.nom).parent().removeClass('hasError');
+//         }
 
-        if (email == null || email == '') {
-            $(form.email).parent().addClass('hasError');
-            $(form.email).parent().animateCss('shake');
-            ifemail = false;
-            errors.push('Remplir l\'email');
-        } else {
-            $(form.email).parent().removeClass('hasError');
-        }
+//         if (email == null || email == '') {
+//             $(form.email).parent().addClass('hasError');
+//             $(form.email).parent().animateCss('shake');
+//             ifemail = false;
+//             errors.push('Remplir l\'email');
+//         } else {
+//             $(form.email).parent().removeClass('hasError');
+//         }
 
-        if (gsm == '') {
-            $(form.gsm).parent().addClass('hasError');
-            $(form.gsm).parent().animateCss('shake');
-            ifgsm = false;
-            errors.push('Remplir le télephone');
-        } else {
-            $(form.gsm).parent().removeClass('hasError');
-        }
+//         if (gsm == '') {
+//             $(form.gsm).parent().addClass('hasError');
+//             $(form.gsm).parent().animateCss('shake');
+//             ifgsm = false;
+//             errors.push('Remplir le télephone');
+//         } else {
+//             $(form.gsm).parent().removeClass('hasError');
+//         }
 
-    } else {
+//     } else {
 
-        if (nom == null || nom == '') {
-            $(form.nom).addClass('hasError');
-            $(form.nom).animateCss('shake');
-            ifnom = false;
-            errors.push('Remplir le nom');
-        } else {
-            $(form.nom).removeClass('hasError');
-        }
+//         if (nom == null || nom == '') {
+//             $(form.nom).addClass('hasError');
+//             $(form.nom).animateCss('shake');
+//             ifnom = false;
+//             errors.push('Remplir le nom');
+//         } else {
+//             $(form.nom).removeClass('hasError');
+//         }
 
-        if (email == null || email == '') {
-            $(form.email).addClass('hasError');
-            $(form.email).animateCss('shake');
-            ifemail = false;
-            errors.push('Remplir l\'email');
-        } else {
-            $(form.email).removeClass('hasError');
-        }
+//         if (email == null || email == '') {
+//             $(form.email).addClass('hasError');
+//             $(form.email).animateCss('shake');
+//             ifemail = false;
+//             errors.push('Remplir l\'email');
+//         } else {
+//             $(form.email).removeClass('hasError');
+//         }
 
-        if (gsm == null || gsm == '' ) {
-            $(form.gsm).addClass('hasError');
-            $(form.gsm).animateCss('shake');
-            ifgsm = false;
-            errors.push('Remplir le télephone');
-        } else {
-            $(form.gsm).removeClass('hasError');
-        }
-
-
-    }
-
-    if (ifgsm == false || ifnom == false || ifemail == false) {
-        $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-
-        if (!$(this).hasClass('has-icon')) {
-            for (var i = 0, l = errors.length; i < l; i++) {
-                $('#errors-simulate').append('' + errors[i] + '</br>');
-            }
-            $('#errors-simulate').show();
-        }
-        return;
-    }
-
-    if (!$(this).hasClass('has-icon')) {
-        $('#errors-simulate').html(null);
-        $('#errors-simulate').hide();
-    }
+//         if (gsm == null || gsm == '' ) {
+//             $(form.gsm).addClass('hasError');
+//             $(form.gsm).animateCss('shake');
+//             ifgsm = false;
+//             errors.push('Remplir le télephone');
+//         } else {
+//             $(form.gsm).removeClass('hasError');
+//         }
 
 
-    //sendTracking_Api(ID_google_analytic,Userip)
+//     }
+
+//     if (ifgsm == false || ifnom == false || ifemail == false) {
+//         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+//         if (!$(this).hasClass('has-icon')) {
+//             for (var i = 0, l = errors.length; i < l; i++) {
+//                 $('#errors-simulate').append('' + errors[i] + '</br>');
+//             }
+//             $('#errors-simulate').show();
+//         }
+//         return;
+//     }
+
+//     if (!$(this).hasClass('has-icon')) {
+//         $('#errors-simulate').html(null);
+//         $('#errors-simulate').hide();
+//     }
+
+
+//     //sendTracking_Api(ID_google_analytic,Userip)
 
 
 
 
-    insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
+//     insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
-});
+// });
 
 
 $('.valideernumero').click(function () {
