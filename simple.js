@@ -69,131 +69,132 @@ function changerPhoneCRM(id, newphone) {
 }
 
 
-// function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landingpageSOURCE, ID_google_analytic, elm, tranche = null) {
+function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landingpageSOURCE, ID_google_analytic, elm, tranche = null) {
 
-//     $('.p-errors-phone-exist').hide();
+    $('.p-errors-phone-exist').hide();
 
-//     var source = 'download_ebook';
+    var source = 'download_ebook';
 
-//     if ($(elm).hasClass('eligilibity_pinel')) {
-//         source = 'eligilibity_pinel';
-//     }
-//     else if($(elm).hasClass('simulationscpigouv'))
-//     {
-//         source = 'simulationscpigouv';
-//     }
-//     else if($(elm).hasClass('telechargerappstore'))
-//     {
-//         source = 'telechargerappstore';
-//     }
-//     else if($(elm).hasClass('telechargerplaystore'))
-//     {
-//         source = 'telechargerplaystore';
-//     }
+    if ($(elm).hasClass('eligilibity_pinel')) {
+        source = 'eligilibity_pinel';
+    }
+    else if($(elm).hasClass('simulationscpigouv'))
+    {
+        source = 'simulationscpigouv';
+    }
+    else if($(elm).hasClass('telechargerappstore'))
+    {
+        source = 'telechargerappstore';
+    }
+    else if($(elm).hasClass('telechargerplaystore'))
+    {
+        source = 'telechargerplaystore';
+    }
 
-//     var resulat = false;
-//     $.ajax({
-//         url: "https://labanquedelimmobilier.net/landing/leadpinel.php",
-//         type: "post",
-//         async: false,
-//         data: {
-//             "from": landingpageSOURCE,
-//             "nom": nom,
-//             "tel": tel,
-//             "email": email,
-//             "age": age,
-//             "statut": statut,
-//             "nbenfant": nbenfant,
-//             "daterdv": daterdv,
-//             "ID_google_analytic": ID_google_analytic,
-//             "client_id": checkIfAnalyticsLoaded2,
-//             "tranche": tranche,
+    var resulat = false;
+    $.ajax({
+        url: "https://labanquedelimmobilier.net/landing/leadpinel.php",
+        type: "post",
+        async: false,
+        data: {
+            "from": landingpageSOURCE,
+            "nom": nom,
+            "tel": tel,
+            "email": email,
+            "age": age,
+            "statut": statut,
+            "nbenfant": nbenfant,
+            "daterdv": daterdv,
+            "ID_google_analytic": ID_google_analytic,
+            "client_id": checkIfAnalyticsLoaded2,
+            "tranche": tranche,
 
-//         },
-//         success: function (data) {
-//             if (data.registred) {
+        },
+        success: function (data) {
+            if (data.registred) {
 
-//                 sendTracking_Api(Userip,ID_google_analytic)
-//                 sendAdConversion_Api(ID_google_Ad)
+                sendTracking_Api(Userip,ID_google_analytic)
+                sendAdConversion_Api(ID_google_Ad)
 
-//                 localStorage.setItem('source', source);
-//                 localStorage.setItem('id', data.id);
-//                 localStorage.setItem('age', age);
-//                 localStorage.setItem('nom', nom);
-//                 localStorage.setItem('statut', statut);
-//                 localStorage.setItem('nbenfant', nbenfant);
-//                 localStorage.setItem('email', email);
-//                 localStorage.setItem('tel', tel);
+                localStorage.setItem('source', source);
+                localStorage.setItem('id', data.id);
+                localStorage.setItem('age', age);
+                localStorage.setItem('nom', nom);
+                localStorage.setItem('statut', statut);
+                localStorage.setItem('nbenfant', nbenfant);
+                localStorage.setItem('email', email);
+                localStorage.setItem('tel', tel);
 
-//                 var codegen = Math.floor(1000 + Math.random() * 9000);
+                var codegen = Math.floor(1000 + Math.random() * 9000);
 
-//                 localStorage.setItem('codegen', codegen);
+                localStorage.setItem('codegen', codegen);
 
-//                 console.log(codegen);
+                console.log(codegen);
 
-//                 $.ajax({
-//                     url: "https://payez-dimpot.fr/sms/web/api/send-sms",
-//                     method: "post",
-//                     data: {"code": codegen, "phone": tel.replace(/^0/gi, "+33")},
-//                     success: function (data) {
-//                         if (data.status) {
+                $.ajax({
+                    url: "https://payez-dimpot.fr/sms/web/api/send-sms",
+                    method: "post",
+                    data: {"code": codegen, "phone": tel.replace(/^0/gi, "+33")},
+                    success: function (data) {
+                        if (data.status) {
 
-//                             resulat = true;
-//                             localStorage.setItem('smssent', 1);
-//                             localStorage.setItem('smsvalide', 0);
+                            resulat = true;
+                            localStorage.setItem('smssent', 1);
+                            localStorage.setItem('smsvalide', 0);
 
-//                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-//                             $('#gsm').val('');
+                            $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+                            $('#gsm').val('');
                             
-//                             // $('.modal').modal('hide');
+                            // $('.modal').modal('hide');
 
-//                             $('#selectInputModal').modal('hide');
-//                             // $('#selectInputModal').removeClass('show');
+                            $('#selectInputModal').modal('hide');
+                            // $('#selectInputModal').removeClass('show');
 
-//                             console.log("is show")
+                            console.log("is show")
 
-//                             $('#smsfirst').modal('show');
-
-
-//                         }
-//                         else
-//                         {
-//                                 $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-
-//                                 var form = $(elm).closest('form');
-
-//                                 $(form.gsm).addClass('hasError');
-//                                 $(form.gsm).animateCss('shake');
-
-//                                 //errors.push('Remplir le télephone');
-
-//                             alert('Veuillez insérer un numéro de téléphone valide');
-
-//                             resulat = false;
-
-//                         }
-//                     }
-//                 })
-
-//             } else {
-
-//                 $('.p-errors-phone-exist').show();
-
-//                 $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
-
-//                 console.log(data);
-
-//                 resulat = false;
-
-//             }
-//         }
-//     });
+                            $('#smsfirst').modal();
+                            $('#smsfirst').modal('show');
 
 
+                        }
+                        else
+                        {
+                                $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+                                var form = $(elm).closest('form');
+
+                                $(form.gsm).addClass('hasError');
+                                $(form.gsm).animateCss('shake');
+
+                                //errors.push('Remplir le télephone');
+
+                            alert('Veuillez insérer un numéro de téléphone valide');
+
+                            resulat = false;
+
+                        }
+                    }
+                })
+
+            } else {
+
+                $('.p-errors-phone-exist').show();
+
+                $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+                console.log(data);
+
+                resulat = false;
+
+            }
+        }
+    });
 
 
 
-// }
+
+
+}
 
 function validersms(newcode) {
     if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
@@ -378,114 +379,114 @@ $.fn.extend({
 });
 
 
-// $('.telecharger').click(function () {
+$('.telecharger').click(function () {
 
-//     if (!$(this).hasClass('has-icon')) {
-//         $('#errors-simulate').html(null);
-//         $('#errors-simulate').hide();
-//     }
+    if (!$(this).hasClass('has-icon')) {
+        $('#errors-simulate').html(null);
+        $('#errors-simulate').hide();
+    }
 
-//     var errors = [];
+    var errors = [];
 
-//     $(this).find('.spinner-border.spinner-border-sm').removeClass('d-none');
+    $(this).find('.spinner-border.spinner-border-sm').removeClass('d-none');
 
-//     var form = $(this).closest('form').get(0);
-//     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
-//     var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
-//     var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
-//     var tranche = $('#selectInput').val();
+    var form = $(this).closest('form').get(0);
+    var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
+    var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
+    var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
+    var tranche = $('#selectInput').val();
 
-//     ifnom = true;
-//     ifemail = true;
-//     ifgsm = true;
+    ifnom = true;
+    ifemail = true;
+    ifgsm = true;
 
-//     if ($(this).hasClass('has-icon')) {
+    if ($(this).hasClass('has-icon')) {
 
-//         if (nom == null || nom == '') {
-//             $(form.nom).parent().addClass('hasError');
-//             $(form.nom).parent().animateCss('shake');
-//             ifnom = false;
-//             errors.push('Remplir le nom');
-//         } else {
-//             $(form.nom).parent().removeClass('hasError');
-//         }
+        if (nom == null || nom == '') {
+            $(form.nom).parent().addClass('hasError');
+            $(form.nom).parent().animateCss('shake');
+            ifnom = false;
+            errors.push('Remplir le nom');
+        } else {
+            $(form.nom).parent().removeClass('hasError');
+        }
 
-//         if (email == null || email == '') {
-//             $(form.email).parent().addClass('hasError');
-//             $(form.email).parent().animateCss('shake');
-//             ifemail = false;
-//             errors.push('Remplir l\'email');
-//         } else {
-//             $(form.email).parent().removeClass('hasError');
-//         }
+        if (email == null || email == '') {
+            $(form.email).parent().addClass('hasError');
+            $(form.email).parent().animateCss('shake');
+            ifemail = false;
+            errors.push('Remplir l\'email');
+        } else {
+            $(form.email).parent().removeClass('hasError');
+        }
 
-//         if (gsm == '') {
-//             $(form.gsm).parent().addClass('hasError');
-//             $(form.gsm).parent().animateCss('shake');
-//             ifgsm = false;
-//             errors.push('Remplir le télephone');
-//         } else {
-//             $(form.gsm).parent().removeClass('hasError');
-//         }
+        if (gsm == '') {
+            $(form.gsm).parent().addClass('hasError');
+            $(form.gsm).parent().animateCss('shake');
+            ifgsm = false;
+            errors.push('Remplir le télephone');
+        } else {
+            $(form.gsm).parent().removeClass('hasError');
+        }
 
-//     } else {
+    } else {
 
-//         if (nom == null || nom == '') {
-//             $(form.nom).addClass('hasError');
-//             $(form.nom).animateCss('shake');
-//             ifnom = false;
-//             errors.push('Remplir le nom');
-//         } else {
-//             $(form.nom).removeClass('hasError');
-//         }
+        if (nom == null || nom == '') {
+            $(form.nom).addClass('hasError');
+            $(form.nom).animateCss('shake');
+            ifnom = false;
+            errors.push('Remplir le nom');
+        } else {
+            $(form.nom).removeClass('hasError');
+        }
 
-//         if (email == null || email == '') {
-//             $(form.email).addClass('hasError');
-//             $(form.email).animateCss('shake');
-//             ifemail = false;
-//             errors.push('Remplir l\'email');
-//         } else {
-//             $(form.email).removeClass('hasError');
-//         }
+        if (email == null || email == '') {
+            $(form.email).addClass('hasError');
+            $(form.email).animateCss('shake');
+            ifemail = false;
+            errors.push('Remplir l\'email');
+        } else {
+            $(form.email).removeClass('hasError');
+        }
 
-//         if (gsm == null || gsm == '' ) {
-//             $(form.gsm).addClass('hasError');
-//             $(form.gsm).animateCss('shake');
-//             ifgsm = false;
-//             errors.push('Remplir le télephone');
-//         } else {
-//             $(form.gsm).removeClass('hasError');
-//         }
-
-
-//     }
-
-//     if (ifgsm == false || ifnom == false || ifemail == false) {
-//         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-
-//         if (!$(this).hasClass('has-icon')) {
-//             for (var i = 0, l = errors.length; i < l; i++) {
-//                 $('#errors-simulate').append('' + errors[i] + '</br>');
-//             }
-//             $('#errors-simulate').show();
-//         }
-//         return;
-//     }
-
-//     if (!$(this).hasClass('has-icon')) {
-//         $('#errors-simulate').html(null);
-//         $('#errors-simulate').hide();
-//     }
+        if (gsm == null || gsm == '' ) {
+            $(form.gsm).addClass('hasError');
+            $(form.gsm).animateCss('shake');
+            ifgsm = false;
+            errors.push('Remplir le télephone');
+        } else {
+            $(form.gsm).removeClass('hasError');
+        }
 
 
-//     //sendTracking_Api(ID_google_analytic,Userip)
+    }
+
+    if (ifgsm == false || ifnom == false || ifemail == false) {
+        $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
+        if (!$(this).hasClass('has-icon')) {
+            for (var i = 0, l = errors.length; i < l; i++) {
+                $('#errors-simulate').append('' + errors[i] + '</br>');
+            }
+            $('#errors-simulate').show();
+        }
+        return;
+    }
+
+    if (!$(this).hasClass('has-icon')) {
+        $('#errors-simulate').html(null);
+        $('#errors-simulate').hide();
+    }
+
+
+    //sendTracking_Api(ID_google_analytic,Userip)
 
 
 
 
-//     insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
+    insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
-// });
+});
 
 
 $('.valideernumero').click(function () {
