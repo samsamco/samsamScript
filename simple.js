@@ -550,13 +550,13 @@ $('.fermerpop').click(function (event) {
 });
 
 
-$('#selectInput').change(function () {
+// $('#selectInput').change(function () {
 
-    if ($(this).val() != 0) {
-        $("#selectInputModal").modal();
-    }
+//     if ($(this).val() != 0) {
+//         $("#selectInputModal").modal();
+//     }
 
-});
+// });
 
 $('.prev1').on('click', function () {
     // $('#form-total-p-0').show();
