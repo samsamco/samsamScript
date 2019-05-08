@@ -206,7 +206,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                 "name": nom,
                 "email": email,
                 "phone": tel,
-                "view_id": ID_google_analytic
+                "view_id": ID_google_View
             },
             success: function (data1) {
                 console.log(data1)
