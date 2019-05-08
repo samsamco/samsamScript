@@ -87,6 +87,10 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     {
         source = 'simulationscpigouv';
     }
+        else if($(elm).hasClass('download_ebook'))
+    {
+        source = 'download_ebook';
+    }
     else if($(elm).hasClass('telechargerappstore'))
     {
         source = 'telechargerappstore';
@@ -373,6 +377,7 @@ function validersms(newcode) {
                         document.body.removeChild(element);
 
                         break;
+
 
 
                 }
