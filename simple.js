@@ -698,9 +698,9 @@ function calc() {
 
 /********Calculer*****/
 
-$('a.btn').on('click',function(event){
-    event.preventDefault();
-})
+// $('a.btn').on('click',function(event){
+//     event.preventDefault();
+// })
 
 $('.slow').click(function(){
     document.querySelector('.simulateur').scrollIntoView({
