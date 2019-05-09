@@ -686,9 +686,9 @@ $(document).on("click",".directDownload",function(event){
 
 
 
-$('a.btn:not(.d-inline-block.color-white.bg-red)').on('click',function(event){
-    event.preventDefault();
-})
+// $('a.btn:not([target=_blank])').on('click',function(event){
+//     event.preventDefault();
+// })
 
 $('.calculer').click(function(){
 
