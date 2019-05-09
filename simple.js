@@ -258,8 +258,8 @@ function validersms(newcode,urlhref=null) {
                 $('[data-target*=modallivre]').attr('target','_blank');
                 $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
                 $('[data-target*=modalapplication]').attr('target','_blank');
-                $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
-                $('[data-target*=modalapplication]').attr('target','_blank');
+                $('[data-target*=modalportail]').attr('href','https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier');
+                $('[data-target*=modalportail]').attr('target','_blank');
                 $('[data-target]').removeAttr('data-target');
                 $('[data-toggle]').removeAttr('data-toggle');
 
