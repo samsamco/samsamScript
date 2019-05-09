@@ -794,7 +794,7 @@ $('.f1 input').on('keydown',function (event) {
 
   if (event.keyCode === 13) {
     event.preventDefault();
-    document.getElementsByClassName("calculer").click();
+    document.getElementsByClassName("calculer")[0].click();
   }
 
 
@@ -805,7 +805,7 @@ $('.f2 input').on('keydown',function (event) {
 
   if (event.keyCode === 13) {
     event.preventDefault();
-    document.getElementsByClassName("telecharger").click();
+    document.getElementsByClassName("telecharger")[0].click();
   }
 
 
