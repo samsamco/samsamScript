@@ -817,7 +817,7 @@ $('.formPopup input').on('keydown',function (event) {
         console.log('ok')
 
     // event.preventDefault();
-    document.getElementsByClassName("telecharger")[0].click();
+    $(".telecharger").click();
   }
 
 
