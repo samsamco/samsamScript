@@ -98,6 +98,10 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     else if($(elm).hasClass('telechargerplaystore'))
     {
         source = 'telechargerplaystore';
+
+    }else if($(elm).hasClass('link_pinel'))
+    {
+        source = 'link_pinel';
     }
 
     var resulat = false;
@@ -230,7 +234,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
 }
 
-function validersms(newcode) {
+function validersms(newcode,urlhref=null) {
+
     if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
 
         if (newcode != localStorage.getItem('codegen')) {
@@ -378,6 +383,11 @@ function validersms(newcode) {
 
                         break;
 
+                    case 'link_pinel':
+
+                        window.location=urlhref
+
+                        break;
 
 
                 }
@@ -396,6 +406,45 @@ function validersms(newcode) {
 // require('jquery.inputmask.bundle');
 
 
+/******Calculer SCPI ****/
+
+function calc() {
+
+    var bill = localStorage.getItem('montant');
+    var tip = bill * .06;
+    var revenu = tip / 12
+
+    localStorage.setItem('ran', Number(tip).toFixed());
+
+    localStorage.setItem('rvm', Number(revenu).toFixed());
+
+}
+
+
+/********Calculer*****/
+
+// $('a.btn').on('click',function(event){
+//     event.preventDefault();
+// })
+
+$('.slow').click(function(){
+    document.querySelector('.simulateur').scrollIntoView({
+        behavior: 'smooth'
+    });
+    $('.montant').focus();
+})
+
+
+
+function isNumber(evt) {
+
+    var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+    if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+        return false;
+
+    return true;
+
+}   
 
 
 $.fn.extend({
@@ -539,7 +588,9 @@ $('.telecharger').click(function () {
 $('.valideernumero').click(function () {
 
     var codegen = $('.codegen').val();
-    validersms(codegen);
+    var urlhref = localStorage.getItem('urlhref');
+
+    validersms(codegen,urlhref);
     $('.codegen').val('');
 
 });
@@ -681,34 +732,6 @@ $('.calculer').click(function(){
    }
 })
 
-/******Calculer SCPI ****/
-
-function calc() {
-
-    var bill = localStorage.getItem('montant');
-    var tip = bill * .06;
-    var revenu = tip / 12
-
-    localStorage.setItem('ran', Number(tip).toFixed());
-
-    localStorage.setItem('rvm', Number(revenu).toFixed());
-
-}
-
-
-/********Calculer*****/
-
-// $('a.btn').on('click',function(event){
-//     event.preventDefault();
-// })
-
-$('.slow').click(function(){
-    document.querySelector('.simulateur').scrollIntoView({
-        behavior: 'smooth'
-    });
-    $('.montant').focus();
-})
-
 
 
 $('#selectInput').change(function () {
@@ -749,12 +772,10 @@ $('#selectInput').change(function () {
 });
 
 
-function isNumber(evt) {
+$('.readlink').click(function () {
 
-    var iKeyCode = (evt.which) ? evt.which : evt.keyCode
-    if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
-        return false;
+    var urlhref  = $(this).attr('data-href')
+    console.log(urlhref)
+    localStorage.setItem('urlhref',urlhref);
 
-    return true;
-
-}   
+});
