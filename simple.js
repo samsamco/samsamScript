@@ -102,7 +102,14 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     }else if($(elm).hasClass('link_pinel'))
     {
         source = 'link_pinel';
+
+    }else if($(elm).hasClass('redirecttoamf'))
+    {
+        source = 'redirecttoamf';
     }
+
+
+
 
     var resulat = false;
     $.ajax({
@@ -345,26 +352,14 @@ function validersms(newcode,urlhref=null) {
 
                     case "telechargerappstore":
 
-                        var element = document.createElement('a');
-                        element.setAttribute('href', 'https://play.google.com/store/apps/details?id=scpi.simulateur.co');
-                        element.setAttribute('target', '_blank');
-                        element.style.display = 'none';
-                        document.body.appendChild(element);
-                        element.click();
-                        document.body.removeChild(element);
+                        window.open('https://play.google.com/store/apps/details?id=scpi.simulateur.co','_blank');
+
 
                         break;
 
                     case "telechargerplaystore":
 
-                        var element = document.createElement('a');
-                        element.setAttribute('href', 'https://play.google.com/store/apps/details?id=scpi.simulateur.co');
-                        element.setAttribute('target', '_blank');
-                        element.style.display = 'none';
-                        document.body.appendChild(element);
-                        element.click();
-                        document.body.removeChild(element);
-
+                        window.open('https://play.google.com/store/apps/details?id=scpi.simulateur.co','_blank');
 
                         break;
 
@@ -385,10 +380,14 @@ function validersms(newcode,urlhref=null) {
 
                     case 'link_pinel':
 
-                        window.location=urlhref
+                        window.open(urlhref,'_blank');
 
                         break;
 
+                    case "redirecttoamf":
+
+                        window.open('https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier','_blank');
+  
 
                 }
 
