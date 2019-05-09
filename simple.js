@@ -296,11 +296,16 @@ function validersms(newcode,urlhref=null) {
 
                     case "download_pinel":
 
-                        $('[data-toggle=modal]').addClass('directDownload');
-                        //console.log('smsmsms')
+                        // $('[data-toggle=modal]').addClass('directDownload');
+                        // //console.log('smsmsms')
+                        // $('[data-toggle=modal]').removeAttr('data-target');
+                        // $('[data-toggle=modal]').removeAttr('data-toggle');
+                        // $('.modalebook').addClass('directDownload');
+
+                        $('[data-toggle=modal]:not(.readlink)').addClass('directDownload');
+                        $('.readlink').attr('href',$('.readlink').attr('data-href'));
                         $('[data-toggle=modal]').removeAttr('data-target');
                         $('[data-toggle=modal]').removeAttr('data-toggle');
-                        $('.modalebook').addClass('directDownload');
 
 
 
