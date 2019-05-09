@@ -811,6 +811,16 @@ $('.f2 input').on('keydown',function (event) {
 
 });
 
+$('.formPopup input').on('keydown',function (event) {
+
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementsByClassName("telecharger")[0].click();
+  }
+
+
+});
+
 
 $('form').on('submit',function (event) {
 
@@ -819,8 +829,17 @@ $('form').on('submit',function (event) {
 
 });
 
+ 
+
+$('.codegen').on('keydown',function (event) {
+
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementsByClassName("telecharger")[0].click();
+  }
 
 
+});
 
 
 
