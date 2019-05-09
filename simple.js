@@ -165,7 +165,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
                             $('#gsm').val('');
                             
-                            // $('.modal').modal('hide');
+                            $('.modal').modal('hide');
 
                             $('#selectInputModal').modal('hide');
                             $('#modalebook').modal('hide');
@@ -173,7 +173,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                             //console.log("is show")
 
-                            $('#smsfirst').modal();
+                            // $('#smsfirst').modal();
                             $('#smsfirst').modal('show');
 
 
@@ -254,19 +254,13 @@ function validersms(newcode,urlhref=null) {
                 localStorage.setItem('smsvalide',1);
 
                 $('#smsfirst').modal('hide');
-
                 $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
-
                 $('[data-target*=modallivre]').attr('target','_blank');
-
                 $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
-
                 $('[data-target*=modalapplication]').attr('target','_blank');
-
-
-
+                $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
+                $('[data-target*=modalapplication]').attr('target','_blank');
                 $('[data-target]').removeAttr('data-target');
-
                 $('[data-toggle]').removeAttr('data-toggle');
 
             if (localStorage.getItem('source') != null) {
