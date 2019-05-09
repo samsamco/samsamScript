@@ -812,9 +812,10 @@ $('.f2 input').on('keydown',function (event) {
 });
 
 $('.formPopup input').on('keydown',function (event) {
+    alert('ok')
 
   if (event.keyCode === 13) {
-    event.preventDefault();
+    // event.preventDefault();
     document.getElementsByClassName("telecharger")[0].click();
   }
 
@@ -835,7 +836,7 @@ $('.codegen').on('keydown',function (event) {
 
   if (event.keyCode === 13) {
     event.preventDefault();
-    document.getElementsByClassName("telecharger")[0].click();
+    document.getElementsByClassName("valideernumero")[0].click();
   }
 
 
