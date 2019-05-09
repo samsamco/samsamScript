@@ -790,13 +790,31 @@ $('.readlink').click(function () {
 
 
 
-var inputTelecharger =document.getElementsByClassName("telecharger");
+$('.f1 input').on('keydown',function (event) {
 
-inputTelecharger.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    document.getElementsByClassName("calculer").click();
+  }
+
+
+});
+
+
+$('.f2 input').on('keydown',function (event) {
+
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementsByClassName("telecharger").click();
   }
+
+
+});
+
+
+$('form').on('submit',function (event) {
+
+  return false
 
 
 });
