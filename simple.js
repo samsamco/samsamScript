@@ -775,7 +775,11 @@ $('#selectInput').change(function () {
 $('.readlink').click(function () {
 
     var urlhref  = $(this).attr('data-href')
-    console.log(urlhref)
-    localStorage.setItem('urlhref',urlhref);
+
+    if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
+        window.href=urlhref
+    }else{
+        localStorage.setItem('urlhref',urlhref);
+    }
 
 });
