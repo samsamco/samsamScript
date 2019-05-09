@@ -692,7 +692,7 @@ $(document).on("click",".directDownload",function(event){
 
 
 
-$('a.btn:not(.d-inline-block.color-white)').on('click',function(event){
+$('a.btn:not(.d-inline-block.color-white.bg-red)').on('click',function(event){
     event.preventDefault();
 })
 
