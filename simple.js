@@ -812,9 +812,10 @@ $('.f2 input').on('keydown',function (event) {
 });
 
 $('.formPopup input').on('keydown',function (event) {
-    alert('ok')
 
   if (event.keyCode === 13) {
+        console.log('ok')
+
     // event.preventDefault();
     document.getElementsByClassName("telecharger")[0].click();
   }
