@@ -522,12 +522,13 @@ $('.telecharger').click(function () {
             $(form.email).parent().addClass('hasError');
             $(form.email).parent().animateCss('shake');
             ifemail = false;
+            console.log(email)
             errors.push('Remplir l\'email');
         } else {
             $(form.email).parent().removeClass('hasError');
         }
 
-        if (gsm == '') {
+        if (email == null || email == '') {
             $(form.gsm).parent().addClass('hasError');
             $(form.gsm).parent().animateCss('shake');
             ifgsm = false;
