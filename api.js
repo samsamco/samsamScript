@@ -56,8 +56,6 @@ function sendFbConversion_Api(ID_faceboo_Ad ) {
     fbq('track', 'Purchase', {currency: "USD", value: 77.00});
 
 
-
-
 }
 
 
