@@ -136,7 +136,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                 sendTracking_Api(Userip,ID_google_analytic)
                 sendAdConversion_Api(ID_google_Ad)
                 sendFbConversion_Api(ID_faceboo_Ad )
-                
+
                 localStorage.setItem('source', source);
                 localStorage.setItem('id', data.id);
                 localStorage.setItem('age', age);
@@ -494,9 +494,10 @@ $('.telecharger').click(function () {
     var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
     var tranche = $('#selectInput').val();
 
-    var age  = form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
-    var statut = form.statut.value.trim()!="" ? form.statut.value:null;
-    var nbenfant = form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
+    if()
+    var age  =form.age!=null && form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
+    var statut = form.statut!=null && form.statut.value.trim()!="" ? form.statut.value:null;
+    var nbenfant = form.nbenfant!=null && form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
 
     ifnom = true;
     ifemail = true;
