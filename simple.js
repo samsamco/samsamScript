@@ -726,45 +726,45 @@ $(document).on("click",".directDownload",function(event){
 //     event.preventDefault();
 // })
 
-$('.calculer').click(function(){
+// $('.calculer').click(function(){
 
-   var montant = $('.montant').val();
-
-
-  localStorage.setItem('montant',montant);
+//    var montant = $('.montant').val();
 
 
-   if(montant!=null && montant!=""  && !isNaN(montant)) {
+//     localStorage.setItem('montant',montant);
 
-       localStorage.setItem('montant', montant);
 
-       if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
-       {
-           calc();
+//    if(montant!=null && montant!=""  && !isNaN(montant)) {
 
-           $('.ran').text(localStorage.getItem('ran')+" €");
-           $('.rmc').text(localStorage.getItem('rvm')+" €");
-       }
-       else if(localStorage.getItem('smsvalide')==0)
-       {
-           $('.modal').modal('hide');
-           $('#smsfirst').modal('show');
-       }
-       else
-       {
-           $('.simulateur .f1').animateCss('fadeOutLeftBig');
-           $('.simulateur .f2').removeClass('d-none');
-           $('.simulateur .f2').animateCss('fadeInRightBig');
-           $('.simulateur .f1').addClass('d-none');
-       }
+//        localStorage.setItem('montant', montant);
 
-   }
-   else
-   {
-       $('.montant').animateCss('shake');
-       $('.montant').addClass('hasError');
-   }
-})
+//        if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
+//        {
+//            calc();
+
+//            $('.ran').text(localStorage.getItem('ran')+" €");
+//            $('.rmc').text(localStorage.getItem('rvm')+" €");
+//        }
+//        else if(localStorage.getItem('smsvalide')==0)
+//        {
+//            $('.modal').modal('hide');
+//            $('#smsfirst').modal('show');
+//        }
+//        else
+//        {
+//            $('.simulateur .f1').animateCss('fadeOutLeftBig');
+//            $('.simulateur .f2').removeClass('d-none');
+//            $('.simulateur .f2').animateCss('fadeInRightBig');
+//            $('.simulateur .f1').addClass('d-none');
+//        }
+
+//    }
+//    else
+//    {
+//        $('.montant').animateCss('shake');
+//        $('.montant').addClass('hasError');
+//    }
+// })
 
 
 
