@@ -42,7 +42,7 @@ function sendAdConversion_Api(Id_adword_conversion) {
 // ---------Facebook conversion-------
 
 
-function sendFbConversion_Api(ID_faceboo_Ad ) {
+function sendFbConversion_Api(ID_faceboo_Ad) {
 
     // !function(f,b,e,v,n,t,s)
     // {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

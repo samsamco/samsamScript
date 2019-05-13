@@ -610,10 +610,6 @@ $('.telecharger').click(function () {
     }
 
 
-    //sendTracking_Api(ID_google_analytic,Userip)
-
-
-
 
     insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
