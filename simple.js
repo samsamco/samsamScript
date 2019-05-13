@@ -339,15 +339,34 @@ function validersms(newcode,urlhref=null) {
                     case "simulationscpigouv":
 
 
-                        calc();
+                        $('.underline .col').removeClass('bg-red');
+                        $('.underline .col').addClass('bg_darkblue');
 
-                        $('.ran').text(localStorage.getItem('ran')+" €");
-                        $('.rmc').text(localStorage.getItem('rvm')+" €");
+                        $('.underline .col:last-child').removeClass('bg_darkblue');
+                        $('.underline .col:last-child').addClass('bg-red');
 
-                        $('.simulateur .f2').animateCss('fadeOutLeftBig');
-                        $('.simulateur .f1').removeClass('d-none');
-                        $('.simulateur .f1').animateCss('fadeInRightBig');
-                        $('.simulateur .f2').addClass('d-none');
+                        $('.sumulateur_content').addClass('d-none');
+                        $('.part_3').removeClass('d-none');
+
+                        $('.col.h-25').remove();
+
+                        $('.col-12.col-md-7').addClass('col-md-6');
+                        $('.col-12.col-md-7').removeClass('col-md-7');
+
+
+                        $('.col-12.col-md-4.text-center.py-3').addClass('col-md-6');
+                        $('.col-12.col-md-4.text-center.py-3').removeClass('col-md-4');
+
+
+                        $('.content').animateCss('fadeOutLeftBig');
+                        $('#chartContainer').removeClass('d-none');
+                        $('#chartContainer').animateCss('fadeInRightBig');
+                        $('.content').addClass('d-none');
+                        $('.content').removeClass('d-md-block');
+
+
+                        setTimeout(function(){simuler(6)},500);
+
                         break;
 
                     case "telechargerappstore":
@@ -725,43 +744,235 @@ $(document).on("click",".directDownload",function(event){
 $('.calculer').click(function(){
 
    var montant = $('.montant').val();
+        var rendement = $('.rendement').val();
+
+        if(montant!=null && montant!=""  && !isNaN(montant) && rendement!=null && rendement!="") {
+
+            localStorage.setItem('montant',montant);
+            localStorage.setItem('rendement',rendement);
+
+            if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
+            {
+                $('.underline .col').removeClass('bg-red');
+                $('.underline .col').addClass('bg_darkblue');
+
+                $('.underline .col:last-child').removeClass('bg_darkblue');
+                $('.underline .col:last-child').addClass('bg-red');
+
+                $('.sumulateur_content').addClass('d-none');
+                $('.part_3').removeClass('d-none');
+
+                var cpp,Br,Rc;
+
+                calculer(cpp,Br,Rc);
+
+                $('#rc').text(Rc+' €');
+                $('#br').text(Br+' €');
+                $('#ccp').text(cpp+' €');
+
+                $('.montant , .rendement').removeClass('hasError');
+
+            }
+            else if(localStorage.getItem('smsvalide')==0)
+            {
+                $('.modal').modal('hide');
+                $('#smsfirst').modal('show');
+            }
+            else
+            {
+                $('.underline .col').removeClass('bg-red');
+                $('.underline .col:first-child').addClass('bg_darkblue');
+                $('.underline .col:nth-child(2)').removeClass('bg_darkblue');
+                $('.underline .col:nth-child(2)').addClass('bg-red');
+                $('.sumulateur_content').addClass('d-none');
 
 
-    localStorage.setItem('montant',montant);
+                $('.part_1').animateCss('fadeOutLeftBig');
+                $('.part_2').removeClass('d-none');
+                $('.part_2').animateCss('fadeInRightBig');
+                $('.part_1').addClass('d-none');
+            }
 
-
-   if(montant!=null && montant!=""  && !isNaN(montant)) {
-
-       localStorage.setItem('montant', montant);
-
-       if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
-       {
-           calc();
-
-           $('.ran').text(localStorage.getItem('ran')+" €");
-           $('.rmc').text(localStorage.getItem('rvm')+" €");
-       }
-       else if(localStorage.getItem('smsvalide')==0)
-       {
-           $('.modal').modal('hide');
-           $('#smsfirst').modal('show');
-       }
-       else
-       {
-           $('.simulateur .f1').animateCss('fadeOutLeftBig');
-           $('.simulateur .f2').removeClass('d-none');
-           $('.simulateur .f2').animateCss('fadeInRightBig');
-           $('.simulateur .f1').addClass('d-none');
-       }
-
-   }
-   else
-   {
-       $('.montant').animateCss('shake');
-       $('.montant').addClass('hasError');
-   }
+        }
+        else
+        {
+            if(!(montant!=null && montant!="" && !isNaN(montant) ))
+            {
+                $('.montant').animateCss('shake');
+                $('.montant').addClass('hasError');
+            }
+            else if(!(rendement!=null && rendement!=""))
+            {
+                $('.rendement').animateCss('shake');
+                $('.rendement').addClass('hasError');
+            }
+        }
 })
 
+
+function calculer(cpp,Br,Rc)
+    {
+        var montant =localStorage.getItem('montant');
+        var rendement = localStorage.getItem('rendemement');
+
+        var ran = Number(montant) * Number(rendement);
+        var rab = ran + ran * 0.12;
+        var  fraisgestion = rab - ran;
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+        var montans=Number(this.Simulation.montant);
+
+        var rans=Number(ran);
+
+
+
+
+
+        var montant = Number(montant);
+        var  rendementnet = Number(rendement);
+
+
+
+        for (var i = 2; i <= 6; i++) {
+
+            montant = Number(montant)+ (montant * 0.015);
+            rendementnet = Number(rendementnet) + (rendementnet * 0.01);
+            ran = montant * rendementnet;
+            rab = ran + ran * 0.12;
+            fraisgestion = rab - ran;
+
+            montans =Number(montans) + Number(montant);
+            rans +=Number(ran);
+        }
+
+
+        var cpp = montant;
+        var Br = montans - (montant*6)  + rans;
+        var Rc = Br/6;
+
+
+    }
+
+
+
+function simuler(nbannes){
+
+        var montant =localStorage.getItem('montant');
+        var rendementnet = localStorage.getItem('rendement');
+
+
+
+        var ran = Number(montant) * Number(rendementnet);
+        var rab = ran + ran * 0.12;
+        var fraisgestion = rab - ran;
+
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+
+        data1.push({y:Number(parseFloat(ran).toFixed(2)),label:"Année 1"});
+        data2.push({y:Number(parseFloat(rab).toFixed(2)),label:"Année 1"});
+        data3.push({y:Number(parseFloat(fraisgestion).toFixed(2)),label:"Année 1"});
+
+        for (var i = 2; i <= nbannes; i++) {
+            montant = Number(montant) + (montant * 0.01);
+            rendementnet = Number(rendementnet) + (rendementnet * 0.01);
+            ran = montant * rendementnet;
+            rab = ran + ran * 0.12;
+            fraisgestion = rab - ran;
+
+            data1.push({y:Number(parseFloat(ran).toFixed(2)),label:"Année "+i});
+            data2.push({y:Number(parseFloat(rab).toFixed(2)),label:"Année "+i});
+            data3.push({y:Number(parseFloat(fraisgestion).toFixed(2)),label:"Année "+i});
+        }
+
+        chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            backgroundColor: "transparent",
+            labelFontColor: "red",
+            axisY: {
+                title: "Montant en euros (€)",
+                valueFormatString: "# €",
+                includeZero: true,
+                labelFontColor: "#fff",
+                titleFontColor: "#fff",
+                gridColor: "#fff",
+                labelFontFamily: "Signika"
+            },
+            axisX:{
+
+                labelFontColor: "#fff",
+                gridColor: "#fff",
+                labelFontFamily: "Signika"
+            },
+            toolTip: {
+                shared: true,
+                content: toolTipFormatter,
+                backgroundColor: "#0056a6",
+                fontFamily: "Signika",
+                borderThickness:0,
+                cornerRadius: 15,
+            },
+            title: {
+                text: "Récapitulatif sur six ans d'investissement",
+                fontColor: "white",
+                fontFamily: "Signika",
+                fontSize: 25,
+                margin: 10
+            },
+            legend : {
+                fontColor: "#fff",
+            },
+            dataPointWidth: 10,
+            data: [{
+                type: "column",
+                showInLegend: true,
+                color:"#ec3143",
+                name: 'Frais de gestion',
+                dataPoints: data3,
+            },
+                {
+                    type: "column",
+                    showInLegend: true,
+                    color:"#ffffff",
+                    name: 'Rente annuelle nette',
+                    dataPoints: data1
+                },
+                {
+                    type: "column",
+                    showInLegend: true,
+                    color:"#03206a",
+                    name: 'Rente annuelle brute',
+                    dataPoints: data2
+                }]
+        });
+
+        try
+        {
+            chart.render();
+        }
+        catch(ex)
+        {
+
+        }
+
+    }
+
+function toolTipFormatter(e) {
+        var str = "";
+        var total = 0 ;
+        var str3;
+        var str2 ;
+        for (var i = 0; i < e.entries.length; i++){
+            var str1 = "<span class=\"carre\" style= \"background:"+e.entries[i].dataSeries.color + "\">  </span>  <span class=\"line-height-normal\"  style= \"color:#fff \"> " + e.entries[i].dataSeries.name + "</span> : <strong class=\"color-white font-weight-bold \">"+  e.entries[i].dataPoint.y + " €</strong> <br/> " ;
+            total = e.entries[i].dataPoint.y + total;
+            str = str.concat(str1);
+        }
+        str2 = "<strong class=\"color-white\" >" + e.entries[0].dataPoint.label + "  </strong> <br/>";
+        // var d = "<div>"+str2.concat(str)+"</div>"
+        return ('<div class="opacitygrap">'+str2.concat(str)+'</div>');
+}
 
 
 $('#selectInput').change(function () {
