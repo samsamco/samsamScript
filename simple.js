@@ -494,7 +494,6 @@ $('.telecharger').click(function () {
     var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
     var tranche = $('#selectInput').val();
 
-    if()
     var age  =form.age!=null && form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
     var statut = form.statut!=null && form.statut.value.trim()!="" ? form.statut.value:null;
     var nbenfant = form.nbenfant!=null && form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
