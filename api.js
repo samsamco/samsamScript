@@ -53,7 +53,7 @@ function sendFbConversion_Api(ID_faceboo_Ad ) {
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('track', 'Purchase', {currency: "USD", value: 77.00});
+    fbq('track', 'Purchase', {currency: "USD", value: 477.00});
 
 
 }
