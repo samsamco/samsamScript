@@ -528,7 +528,7 @@ $('.telecharger').click(function () {
             $(form.email).parent().removeClass('hasError');
         }
 
-        if (email == null || email == '') {
+        if (gsm == null || gsm == '') {
             $(form.gsm).parent().addClass('hasError');
             $(form.gsm).parent().animateCss('shake');
             ifgsm = false;
