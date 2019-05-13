@@ -135,7 +135,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                 sendTracking_Api(Userip,ID_google_analytic)
                 sendAdConversion_Api(ID_google_Ad)
-
+                sendFbConversion_Api(ID_faceboo_Ad )
+                
                 localStorage.setItem('source', source);
                 localStorage.setItem('id', data.id);
                 localStorage.setItem('age', age);
@@ -481,6 +482,9 @@ $('.telecharger').click(function () {
     }
 
     var errors = [];
+    age = null
+    statut = null
+    nbenfant = null
 
     $(this).find('.spinner-border.spinner-border-sm').removeClass('d-none');
 
@@ -490,9 +494,17 @@ $('.telecharger').click(function () {
     var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
     var tranche = $('#selectInput').val();
 
+    var age  = form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
+    var statut = form.statut.value.trim()!="" ? form.statut.value:null;
+    var nbenfant = form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
+
     ifnom = true;
     ifemail = true;
     ifgsm = true;
+    ifage = true;
+    ifstatut = true;
+
+
 
     if ($(this).hasClass('has-icon')) {
 
@@ -553,9 +565,32 @@ $('.telecharger').click(function () {
         }
 
 
+        if (age == null || age == '' ) {
+            $(form.age).addClass('hasError');
+            $(form.age).animateCss('shake');
+            ifage = false;
+            errors.push('Remplir l\'age');
+        } else {
+            $(form.age).removeClass('hasError');
+        }
+
+        if (statut == null || statut == '' ) {
+            $(form.statut).addClass('hasError');
+            $(form.statut).animateCss('shake');
+            ifstatut = false;
+            errors.push('Remplir le statut');
+        } else {
+            $(form.statut).removeClass('hasError');
+        }
+
+
+
     }
 
-    if (ifgsm == false || ifnom == false || ifemail == false) {
+
+    if (ifgsm == false || ifnom == false || ifemail == false && (form.age && (ifage == false || ifstatut == false ) )) {
+
+
         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
 
         if (!$(this).hasClass('has-icon')) {
@@ -578,7 +613,7 @@ $('.telecharger').click(function () {
 
 
 
-    insertlead(nom, gsm, email, age = null, statut = null, nbenfant = null, checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
+    insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
 });
 
