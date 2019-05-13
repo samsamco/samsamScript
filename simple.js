@@ -589,7 +589,8 @@ $('.telecharger').click(function () {
 
     }
 
-            console.log('ifemail : '+ifemail)
+    
+    console.log('ifemail : '+ifemail)
 
     if (ifgsm == false || ifnom == false || ifemail == false && (form.age && (ifage == false || ifstatut == false ) )) {
 
