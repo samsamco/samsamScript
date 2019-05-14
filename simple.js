@@ -616,10 +616,14 @@ $('.telecharger').click(function () {
 
     }
 
+alert(1256);
+
     
     
 
     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
+
+alert(122);
 
 
         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
@@ -638,6 +642,8 @@ $('.telecharger').click(function () {
         $('#errors-simulate').hide();
     }
 
+
+alert(12);
 
 
     insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
