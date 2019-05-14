@@ -75,7 +75,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
     var source = 'none';
 
-    //console.log($(elm))    
+    //console.log($(elm))
 
     if ($(elm).hasClass('download_pinel')) {
         source = 'download_pinel';
@@ -87,7 +87,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     {
         source = 'simulationscpigouv';
     }
-        else if($(elm).hasClass('download_ebook'))
+    else if($(elm).hasClass('download_ebook'))
     {
         source = 'download_ebook';
     }
@@ -165,7 +165,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
                             $('#gsm').val('');
-                            
+
                             $('.modal').modal('hide');
 
                             $('#selectInputModal').modal('hide');
@@ -181,14 +181,14 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                         }
                         else
                         {
-                                $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+                            $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
 
-                                var form = $(elm).closest('form');
+                            var form = $(elm).closest('form');
 
-                                $(form.gsm).addClass('hasError');
-                                $(form.gsm).animateCss('shake');
+                            $(form.gsm).addClass('hasError');
+                            $(form.gsm).animateCss('shake');
 
-                                //errors.push('Remplir le télephone');
+                            //errors.push('Remplir le télephone');
 
                             alert('Veuillez insérer un numéro de téléphone valide');
 
@@ -229,7 +229,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
             },error: function (xhr, ajaxOptions, thrownError) {
                 alert(xhr.status);
-                alert(thrownError);                
+                alert(thrownError);
             }
 
 
@@ -249,20 +249,20 @@ function validersms(newcode,urlhref=null) {
         if (newcode != localStorage.getItem('codegen')) {
             $('.errorwrapper').text('Le code inséré n\'est pas valide');
             return false;
-        
+
         }else{
 
-                localStorage.setItem('smsvalide',1);
+            localStorage.setItem('smsvalide',1);
 
-                $('#smsfirst').modal('hide');
-                $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
-                $('[data-target*=modallivre]').attr('target','_blank');
-                $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
-                $('[data-target*=modalapplication]').attr('target','_blank');
-                $('[data-target*=modalportail]').attr('href','https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier');
-                $('[data-target*=modalportail]').attr('target','_blank');
-                $('[data-target]').removeAttr('data-target');
-                $('[data-toggle]').removeAttr('data-toggle');
+            $('#smsfirst').modal('hide');
+            $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+            $('[data-target*=modallivre]').attr('target','_blank');
+            $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
+            $('[data-target*=modalapplication]').attr('target','_blank');
+            $('[data-target*=modalportail]').attr('href','https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier');
+            $('[data-target*=modalportail]').attr('target','_blank');
+            $('[data-target]').removeAttr('data-target');
+            $('[data-toggle]').removeAttr('data-toggle');
 
             if (localStorage.getItem('source') != null) {
 
@@ -369,9 +369,9 @@ function validersms(newcode,urlhref=null) {
                         $('#rc').text(addCommas(res.Rc)+' €');
                         $('#br').text(addCommas(res.Br)+' €');
                         $('#ccp').text(addCommas(res.cpp)+' €');
-                        
+
                         $('.montant').val(localStorage.getItem('montant'));
-        		        $('.rendement').val(localStorage.getItem('rendement'));
+                        $('.rendement').val(localStorage.getItem('rendement'));
 
                         setTimeout(function(){simuler(6)},500);
 
@@ -414,7 +414,7 @@ function validersms(newcode,urlhref=null) {
                     case "redirecttoamf":
 
                         window.open('https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier','_blank');
-  
+
 
                 }
 
@@ -470,7 +470,7 @@ function isNumber(evt) {
 
     return true;
 
-}   
+}
 
 
 $.fn.extend({
@@ -525,6 +525,8 @@ $('.telecharger').click(function () {
     var age  =form.age!=null && form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
     var statut = form.statut!=null && form.statut.value.trim()!="" ? form.statut.value:null;
     var nbenfant = form.nbenfant!=null && form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
+
+    console.log(nom+" "+email+" "+gsm+" "+age+" "+statut+" "+nbenfant);return;
 
     ifnom = true;
     ifemail = true;
@@ -618,8 +620,8 @@ $('.telecharger').click(function () {
 
 
 
-    
-    
+
+
 
     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
 
@@ -757,236 +759,236 @@ $(document).on("click",".directDownload",function(event){
 
 $('.calculer').click(function(){
 
-   var montant = $('.montant').val();
-        var rendement = $('.rendement').val();
+    var montant = $('.montant').val();
+    var rendement = $('.rendement').val();
 
-        if(montant!=null && montant!=""  && !isNaN(montant) && rendement!=null && rendement!="") {
+    if(montant!=null && montant!=""  && !isNaN(montant) && rendement!=null && rendement!="") {
 
-            localStorage.setItem('montant',montant);
-            localStorage.setItem('rendement',rendement);
+        localStorage.setItem('montant',montant);
+        localStorage.setItem('rendement',rendement);
 
-            if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
-            {
-                $('.underline .col').removeClass('bg-red');
-                $('.underline .col').addClass('bg_darkblue');
+        if(localStorage.getItem('nom')!=null &&  localStorage.getItem('email')!=null && localStorage.getItem('smsvalide')==1)
+        {
+            $('.underline .col').removeClass('bg-red');
+            $('.underline .col').addClass('bg_darkblue');
 
-                $('.underline .col:last-child').removeClass('bg_darkblue');
-                $('.underline .col:last-child').addClass('bg-red');
+            $('.underline .col:last-child').removeClass('bg_darkblue');
+            $('.underline .col:last-child').addClass('bg-red');
 
-                $('.sumulateur_content').addClass('d-none');
-                $('.part_3').removeClass('d-none');
+            $('.sumulateur_content').addClass('d-none');
+            $('.part_3').removeClass('d-none');
 
-                calculer();
+            calculer();
 
-                $('#rc').text(addCommas(res.Rc)+' €');
-                        $('#br').text(addCommas(res.Br)+' €');
-                        $('#ccp').text(addCommas(res.cpp)+' €');
-                        
-                $('.montant , .rendement').removeClass('hasError');
+            $('#rc').text(addCommas(res.Rc)+' €');
+            $('#br').text(addCommas(res.Br)+' €');
+            $('#ccp').text(addCommas(res.cpp)+' €');
 
-            }
-            else if(localStorage.getItem('smsvalide')==0)
-            {
-                $('.modal').modal('hide');
-                $('#smsfirst').modal('show');
-            }
-            else
-            {
-                $('.underline .col').removeClass('bg-red');
-                $('.underline .col:first-child').addClass('bg_darkblue');
-                $('.underline .col:nth-child(2)').removeClass('bg_darkblue');
-                $('.underline .col:nth-child(2)').addClass('bg-red');
-                $('.sumulateur_content').addClass('d-none');
+            $('.montant , .rendement').removeClass('hasError');
 
-
-                $('.part_1').animateCss('fadeOutLeftBig');
-                $('.part_2').removeClass('d-none');
-                $('.part_2').animateCss('fadeInRightBig');
-                $('.part_1').addClass('d-none');
-            }
-
+        }
+        else if(localStorage.getItem('smsvalide')==0)
+        {
+            $('.modal').modal('hide');
+            $('#smsfirst').modal('show');
         }
         else
         {
-            if(!(montant!=null && montant!="" && !isNaN(montant) ))
-            {
-                $('.montant').animateCss('shake');
-                $('.montant').addClass('hasError');
-            }
-            else if(!(rendement!=null && rendement!=""))
-            {
-                $('.rendement').animateCss('shake');
-                $('.rendement').addClass('hasError');
-            }
+            $('.underline .col').removeClass('bg-red');
+            $('.underline .col:first-child').addClass('bg_darkblue');
+            $('.underline .col:nth-child(2)').removeClass('bg_darkblue');
+            $('.underline .col:nth-child(2)').addClass('bg-red');
+            $('.sumulateur_content').addClass('d-none');
+
+
+            $('.part_1').animateCss('fadeOutLeftBig');
+            $('.part_2').removeClass('d-none');
+            $('.part_2').animateCss('fadeInRightBig');
+            $('.part_1').addClass('d-none');
         }
+
+    }
+    else
+    {
+        if(!(montant!=null && montant!="" && !isNaN(montant) ))
+        {
+            $('.montant').animateCss('shake');
+            $('.montant').addClass('hasError');
+        }
+        else if(!(rendement!=null && rendement!=""))
+        {
+            $('.rendement').animateCss('shake');
+            $('.rendement').addClass('hasError');
+        }
+    }
 })
 
 
 function calculer()
-    {
-        var montant =localStorage.getItem('montant');
-        var rendement = localStorage.getItem('rendemement');
+{
+    var montant =localStorage.getItem('montant');
+    var rendement = localStorage.getItem('rendemement');
 
-        var ran = Number(montant) * Number(rendement);
-        var rab = ran + ran * 0.12;
-        var  fraisgestion = rab - ran;
-        var data1 = [];
-        var data2 = [];
-        var data3 = [];
-        var montans=Number(localStorage.getItem('montant'));
+    var ran = Number(montant) * Number(rendement);
+    var rab = ran + ran * 0.12;
+    var  fraisgestion = rab - ran;
+    var data1 = [];
+    var data2 = [];
+    var data3 = [];
+    var montans=Number(localStorage.getItem('montant'));
 
-        var rans=Number(ran);
-
-
+    var rans=Number(ran);
 
 
 
-        var montant = Number(montant);
-        var  rendementnet = Number(rendement);
+
+
+    var montant = Number(montant);
+    var  rendementnet = Number(rendement);
 
 
 
-        for (var i = 2; i <= 6; i++) {
+    for (var i = 2; i <= 6; i++) {
 
-            montant = Number(montant)+ (montant * 0.015);
-            rendementnet = Number(rendementnet) + (rendementnet * 0.01);
-            ran = montant * rendementnet;
-            rab = ran + ran * 0.12;
-            fraisgestion = rab - ran;
+        montant = Number(montant)+ (montant * 0.015);
+        rendementnet = Number(rendementnet) + (rendementnet * 0.01);
+        ran = montant * rendementnet;
+        rab = ran + ran * 0.12;
+        fraisgestion = rab - ran;
 
-            montans =Number(montans) + Number(montant);
-            rans +=Number(ran);
-        }
-
-
-        var cpp = montant;
-        var Br = montans - (localStorage.getItem('montant')*6)  + rans;
-        var Rc = Br/6;
-
-
-         return {'Rc':Rc.toFixed(2) , 'cpp':cpp.toFixed(2) , 'Br':Br.toFixed(2) };;
-
-
+        montans =Number(montans) + Number(montant);
+        rans +=Number(ran);
     }
+
+
+    var cpp = montant;
+    var Br = montans - (localStorage.getItem('montant')*6)  + rans;
+    var Rc = Br/6;
+
+
+    return {'Rc':Rc.toFixed(2) , 'cpp':cpp.toFixed(2) , 'Br':Br.toFixed(2) };;
+
+
+}
 
 
 
 function simuler(nbannes){
 
-        var montant =localStorage.getItem('montant');
-        var rendementnet = localStorage.getItem('rendement');
+    var montant =localStorage.getItem('montant');
+    var rendementnet = localStorage.getItem('rendement');
 
 
 
-        var ran = Number(montant) * Number(rendementnet);
-        var rab = ran + ran * 0.12;
-        var fraisgestion = rab - ran;
+    var ran = Number(montant) * Number(rendementnet);
+    var rab = ran + ran * 0.12;
+    var fraisgestion = rab - ran;
 
-        var data1 = [];
-        var data2 = [];
-        var data3 = [];
+    var data1 = [];
+    var data2 = [];
+    var data3 = [];
 
-        data1.push({y:Number(parseFloat(ran).toFixed(2)),label:"Année 1"});
-        data2.push({y:Number(parseFloat(rab).toFixed(2)),label:"Année 1"});
-        data3.push({y:Number(parseFloat(fraisgestion).toFixed(2)),label:"Année 1"});
+    data1.push({y:Number(parseFloat(ran).toFixed(2)),label:"Année 1"});
+    data2.push({y:Number(parseFloat(rab).toFixed(2)),label:"Année 1"});
+    data3.push({y:Number(parseFloat(fraisgestion).toFixed(2)),label:"Année 1"});
 
-        for (var i = 2; i <= nbannes; i++) {
-            montant = Number(montant) + (montant * 0.01);
-            rendementnet = Number(rendementnet) + (rendementnet * 0.01);
-            ran = montant * rendementnet;
-            rab = ran + ran * 0.12;
-            fraisgestion = rab - ran;
+    for (var i = 2; i <= nbannes; i++) {
+        montant = Number(montant) + (montant * 0.01);
+        rendementnet = Number(rendementnet) + (rendementnet * 0.01);
+        ran = montant * rendementnet;
+        rab = ran + ran * 0.12;
+        fraisgestion = rab - ran;
 
-            data1.push({y:Number(parseFloat(ran).toFixed(2)),label:"Année "+i});
-            data2.push({y:Number(parseFloat(rab).toFixed(2)),label:"Année "+i});
-            data3.push({y:Number(parseFloat(fraisgestion).toFixed(2)),label:"Année "+i});
-        }
+        data1.push({y:Number(parseFloat(ran).toFixed(2)),label:"Année "+i});
+        data2.push({y:Number(parseFloat(rab).toFixed(2)),label:"Année "+i});
+        data3.push({y:Number(parseFloat(fraisgestion).toFixed(2)),label:"Année "+i});
+    }
 
-        chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            backgroundColor: "transparent",
-            labelFontColor: "red",
-            axisY: {
-                title: "Montant en euros (€)",
-                valueFormatString: "# €",
-                includeZero: true,
-                labelFontColor: "#fff",
-                titleFontColor: "#fff",
-                gridColor: "#fff",
-                labelFontFamily: "Signika"
-            },
-            axisX:{
+    chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        backgroundColor: "transparent",
+        labelFontColor: "red",
+        axisY: {
+            title: "Montant en euros (€)",
+            valueFormatString: "# €",
+            includeZero: true,
+            labelFontColor: "#fff",
+            titleFontColor: "#fff",
+            gridColor: "#fff",
+            labelFontFamily: "Signika"
+        },
+        axisX:{
 
-                labelFontColor: "#fff",
-                gridColor: "#fff",
-                labelFontFamily: "Signika"
-            },
-            toolTip: {
-                shared: true,
-                content: toolTipFormatter,
-                backgroundColor: "#0056a6",
-                fontFamily: "Signika",
-                borderThickness:0,
-                cornerRadius: 15,
-            },
-            title: {
-                text: "Récapitulatif sur six ans d'investissement",
-                fontColor: "white",
-                fontFamily: "Signika",
-                fontSize: 25,
-                margin: 10
-            },
-            legend : {
-                fontColor: "#fff",
-            },
-            dataPointWidth: 10,
-            data: [{
+            labelFontColor: "#fff",
+            gridColor: "#fff",
+            labelFontFamily: "Signika"
+        },
+        toolTip: {
+            shared: true,
+            content: toolTipFormatter,
+            backgroundColor: "#0056a6",
+            fontFamily: "Signika",
+            borderThickness:0,
+            cornerRadius: 15,
+        },
+        title: {
+            text: "Récapitulatif sur six ans d'investissement",
+            fontColor: "white",
+            fontFamily: "Signika",
+            fontSize: 25,
+            margin: 10
+        },
+        legend : {
+            fontColor: "#fff",
+        },
+        dataPointWidth: 10,
+        data: [{
+            type: "column",
+            showInLegend: true,
+            color:"#ec3143",
+            name: 'Frais de gestion',
+            dataPoints: data3,
+        },
+            {
                 type: "column",
                 showInLegend: true,
-                color:"#ec3143",
-                name: 'Frais de gestion',
-                dataPoints: data3,
+                color:"#ffffff",
+                name: 'Rente annuelle nette',
+                dataPoints: data1
             },
-                {
-                    type: "column",
-                    showInLegend: true,
-                    color:"#ffffff",
-                    name: 'Rente annuelle nette',
-                    dataPoints: data1
-                },
-                {
-                    type: "column",
-                    showInLegend: true,
-                    color:"#03206a",
-                    name: 'Rente annuelle brute',
-                    dataPoints: data2
-                }]
-        });
+            {
+                type: "column",
+                showInLegend: true,
+                color:"#03206a",
+                name: 'Rente annuelle brute',
+                dataPoints: data2
+            }]
+    });
 
-        try
-        {
-            chart.render();
-        }
-        catch(ex)
-        {
-
-        }
+    try
+    {
+        chart.render();
+    }
+    catch(ex)
+    {
 
     }
 
+}
+
 function toolTipFormatter(e) {
-        var str = "";
-        var total = 0 ;
-        var str3;
-        var str2 ;
-        for (var i = 0; i < e.entries.length; i++){
-            var str1 = "<span class=\"carre\" style= \"background:"+e.entries[i].dataSeries.color + "\">  </span>  <span class=\"line-height-normal\"  style= \"color:#fff \"> " + e.entries[i].dataSeries.name + "</span> : <strong class=\"color-white font-weight-bold \">"+  e.entries[i].dataPoint.y + " €</strong> <br/> " ;
-            total = e.entries[i].dataPoint.y + total;
-            str = str.concat(str1);
-        }
-        str2 = "<strong class=\"color-white\" >" + e.entries[0].dataPoint.label + "  </strong> <br/>";
-        // var d = "<div>"+str2.concat(str)+"</div>"
-        return ('<div class="opacitygrap">'+str2.concat(str)+'</div>');
+    var str = "";
+    var total = 0 ;
+    var str3;
+    var str2 ;
+    for (var i = 0; i < e.entries.length; i++){
+        var str1 = "<span class=\"carre\" style= \"background:"+e.entries[i].dataSeries.color + "\">  </span>  <span class=\"line-height-normal\"  style= \"color:#fff \"> " + e.entries[i].dataSeries.name + "</span> : <strong class=\"color-white font-weight-bold \">"+  e.entries[i].dataPoint.y + " €</strong> <br/> " ;
+        total = e.entries[i].dataPoint.y + total;
+        str = str.concat(str1);
+    }
+    str2 = "<strong class=\"color-white\" >" + e.entries[0].dataPoint.label + "  </strong> <br/>";
+    // var d = "<div>"+str2.concat(str)+"</div>"
+    return ('<div class="opacitygrap">'+str2.concat(str)+'</div>');
 }
 
 
@@ -997,31 +999,31 @@ $('#selectInput').change(function () {
 
     if ($(this).val() != 0) {
 
-    if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
+        if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
 
-    if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
-    $('#not-eligible').show();
-    $('#eligible').hide();
-    } else {
-    $('#not-eligible').hide();
-    $('#eligible').show();
-    }
+            if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
+                $('#not-eligible').show();
+                $('#eligible').hide();
+            } else {
+                $('#not-eligible').hide();
+                $('#eligible').show();
+            }
 
-    $('#response_eligibility').modal('show');
+            $('#response_eligibility').modal('show');
 
-    }
+        }
 
-    if((localStorage.getItem('id') == undefined || localStorage.getItem('id') == null) && localStorage.getItem('smsvalide') == undefined
-    ){
+        if((localStorage.getItem('id') == undefined || localStorage.getItem('id') == null) && localStorage.getItem('smsvalide') == undefined
+        ){
 
-    $("#selectInputModal").modal('show');
+            $("#selectInputModal").modal('show');
 
-    }
+        }
 
-    if(localStorage.getItem('id') != undefined && localStorage.getItem('smsvalide') == 0){
-    $('#smsfirst').modal('show');
+        if(localStorage.getItem('id') != undefined && localStorage.getItem('smsvalide') == 0){
+            $('#smsfirst').modal('show');
 
-    }
+        }
 
     }
 
@@ -1044,10 +1046,10 @@ $('.readlink').click(function () {
 
 $('.f1 input').on('keydown',function (event) {
 
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementsByClassName("calculer")[0].click();
-  }
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementsByClassName("calculer")[0].click();
+    }
 
 
 });
@@ -1055,22 +1057,22 @@ $('.f1 input').on('keydown',function (event) {
 
 $('.f2 input').on('keydown',function (event) {
 
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementsByClassName("telecharger")[0].click();
-  }
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementsByClassName("telecharger")[0].click();
+    }
 
 
 });
 
 $('.formPopup input').on('keydown',function (event) {
 
-  if (event.keyCode === 13) {
+    if (event.keyCode === 13) {
         console.log('ok')
 
-    // event.preventDefault();
-    $(".telecharger").click();
-  }
+        // event.preventDefault();
+        $(".telecharger").click();
+    }
 
 
 });
@@ -1078,19 +1080,19 @@ $('.formPopup input').on('keydown',function (event) {
 
 $('form').on('submit',function (event) {
 
-  return false
+    return false
 
 
 });
 
- 
+
 
 $('.codegen').on('keydown',function (event) {
 
-  if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementsByClassName("valideernumero")[0].click();
-  }
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementsByClassName("valideernumero")[0].click();
+    }
 
 
 });
