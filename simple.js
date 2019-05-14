@@ -526,7 +526,7 @@ $('.telecharger').click(function () {
     var statut = form.statut!=null && form.statut.value.trim()!="" ? form.statut.value:null;
     var nbenfant = form.nbenfant!=null && form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
 
-    console.log(nom+" "+email+" "+gsm+" "+age+" "+statut+" "+nbenfant);return;
+
 
     ifnom = true;
     ifemail = true;
@@ -613,14 +613,9 @@ $('.telecharger').click(function () {
         } else {
             $(form.statut).removeClass('hasError');
         }
-
-
-
     }
-
-
-
-
+    
+    console.log(ifnom+" "+ifemail+" "+ifgsm+" "+ifage+" "+ifstatut);return;
 
 
     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
