@@ -364,6 +364,11 @@ function validersms(newcode,urlhref=null) {
                         $('.content').addClass('d-none');
                         $('.content').removeClass('d-md-block');
 
+                        var res = calculer();
+
+                        $('#rc').text(res[0].Rc+' €');
+                        $('#br').text(res[0].Br+' €');
+                        $('#ccp').text(res[0].cpp+' €');
 
                         setTimeout(function(){simuler(6)},500);
 
@@ -810,7 +815,7 @@ $('.calculer').click(function(){
 })
 
 
-function calculer(cpp,Br,Rc)
+function calculer()
     {
         var montant =localStorage.getItem('montant');
         var rendement = localStorage.getItem('rendemement');
@@ -848,8 +853,14 @@ function calculer(cpp,Br,Rc)
 
 
         var cpp = montant;
-        var Br = montans - (montant*6)  + rans;
+        var Br = montans - (localStorage.getItem('montant')*6)  + rans;
         var Rc = Br/6;
+
+        var res = [];
+
+        res.push({'Rc':Rc.toFixed(2) , 'cpp':cpp.toFixed(2) ,  'Br':Br.toFixed(2) });
+
+        return res;
 
 
     }
