@@ -617,9 +617,9 @@ $('.telecharger').click(function () {
     }
 
     
-    console.log('ifemail : '+ifemail)
+    
 
-    if (ifgsm == false || ifnom == false || ifemail == false || (form.age && (ifage == false || ifstatut == false ) )) {
+    if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
 
 
         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
