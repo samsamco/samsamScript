@@ -369,6 +369,9 @@ function validersms(newcode,urlhref=null) {
                         $('#rc').text(res.Rc+' €');
                         $('#br').text(res.Br+' €');
                         $('#ccp').text(res.cpp+' €');
+                        
+                        $('.montant').val(localStorage.getItem('montant'));
+        		        $('.rendement').val(localStorage.getItem('rendement'));
 
                         setTimeout(function(){simuler(6)},500);
 
