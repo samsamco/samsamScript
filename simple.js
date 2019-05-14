@@ -824,7 +824,7 @@ function calculer()
         var data1 = [];
         var data2 = [];
         var data3 = [];
-        var montans=Number(this.Simulation.montant);
+        var montans=Number(localStorage.getItem('montant'));
 
         var rans=Number(ran);
 
