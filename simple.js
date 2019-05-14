@@ -366,9 +366,9 @@ function validersms(newcode,urlhref=null) {
 
                         var res = calculer();
 
-                        $('#rc').text(res[0].Rc+' €');
-                        $('#br').text(res[0].Br+' €');
-                        $('#ccp').text(res[0].cpp+' €');
+                        $('#rc').text(res.Rc+' €');
+                        $('#br').text(res.Br+' €');
+                        $('#ccp').text(res.cpp+' €');
 
                         setTimeout(function(){simuler(6)},500);
 
@@ -769,9 +769,9 @@ $('.calculer').click(function(){
 
                 calculer();
 
-                $('#rc').text(res[0].Rc+' €');
-                        $('#br').text(res[0].Br+' €');
-                        $('#ccp').text(res[0].cpp+' €');
+                $('#rc').text(res.Rc+' €');
+                        $('#br').text(res.Br+' €');
+                        $('#ccp').text(res.cpp+' €');
                         
                 $('.montant , .rendement').removeClass('hasError');
 
@@ -854,11 +854,8 @@ function calculer()
         var Br = montans - (localStorage.getItem('montant')*6)  + rans;
         var Rc = Br/6;
 
-        var res = [];
 
-        res.push({'Rc':Rc.toFixed(2) , 'cpp':cpp.toFixed(2) ,  'Br':Br.toFixed(2) });
-
-        return res;
+         return {'Rc':Rc.toFixed(2) , 'cpp':cpp.toFixed(2) , 'Br':Br.toFixed(2) };;
 
 
     }
