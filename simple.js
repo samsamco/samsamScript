@@ -767,14 +767,12 @@ $('.calculer').click(function(){
                 $('.sumulateur_content').addClass('d-none');
                 $('.part_3').removeClass('d-none');
 
-                var cpp,Br,Rc;
+                calculer();
 
-                calculer(cpp,Br,Rc);
-
-                $('#rc').text(Rc+' €');
-                $('#br').text(Br+' €');
-                $('#ccp').text(cpp+' €');
-
+                $('#rc').text(res[0].Rc+' €');
+                        $('#br').text(res[0].Br+' €');
+                        $('#ccp').text(res[0].cpp+' €');
+                        
                 $('.montant , .rendement').removeClass('hasError');
 
             }
