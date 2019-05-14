@@ -366,9 +366,9 @@ function validersms(newcode,urlhref=null) {
 
                         var res = calculer();
 
-                        $('#rc').text(res.Rc+' €');
-                        $('#br').text(res.Br+' €');
-                        $('#ccp').text(res.cpp+' €');
+                        $('#rc').text(addCommas(res.Rc)+' €');
+                        $('#br').text(addCommas(res.Br)+' €');
+                        $('#ccp').text(addCommas(res.cpp)+' €');
                         
                         $('.montant').val(localStorage.getItem('montant'));
         		        $('.rendement').val(localStorage.getItem('rendement'));
@@ -772,9 +772,9 @@ $('.calculer').click(function(){
 
                 calculer();
 
-                $('#rc').text(res.Rc+' €');
-                        $('#br').text(res.Br+' €');
-                        $('#ccp').text(res.cpp+' €');
+                $('#rc').text(addCommas(res.Rc)+' €');
+                        $('#br').text(addCommas(res.Br)+' €');
+                        $('#ccp').text(addCommas(res.cpp)+' €');
                         
                 $('.montant , .rendement').removeClass('hasError');
 
