@@ -219,7 +219,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
     if (!(/test/i.test(nom))) {
         $.ajax({
-            url: "https://payez-dimpot.fr/analytics/web/insert-lead",
+            url: "https://www.payer-dimpot.com/analytics/web/insert-lead",
             method: "post",
             data: {
                 "client_id": checkIfAnalyticsLoaded2(),
