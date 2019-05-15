@@ -615,7 +615,7 @@ $('.telecharger').click(function () {
         }
     }
     
-    console.log(ifnom+" "+ifemail+" "+ifgsm+" "+ifage+" "+ifstatut);return;
+   
 
 
     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
