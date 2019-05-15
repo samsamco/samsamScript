@@ -573,6 +573,7 @@ $('.telecharger').click(function () {
             $(form.nom).animateCss('shake');
             ifnom = false;
             errors.push('Remplir le nom');
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
         } else {
             $(form.nom).removeClass('hasError');
         }
@@ -582,6 +583,7 @@ $('.telecharger').click(function () {
             $(form.email).animateCss('shake');
             ifemail = false;
             errors.push('Remplir l\'email');
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
         } else {
             $(form.email).removeClass('hasError');
         }
@@ -591,6 +593,7 @@ $('.telecharger').click(function () {
             $(form.gsm).animateCss('shake');
             ifgsm = false;
             errors.push('Remplir le télephone');
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
         } else {
             $(form.gsm).removeClass('hasError');
         }
@@ -601,6 +604,7 @@ $('.telecharger').click(function () {
             $(form.age).animateCss('shake');
             ifage = false;
             errors.push('Remplir l\'age');
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
         } else {
             $(form.age).removeClass('hasError');
         }
@@ -610,12 +614,13 @@ $('.telecharger').click(function () {
             $(form.statut).animateCss('shake');
             ifstatut = false;
             errors.push('Remplir le statut');
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
         } else {
             $(form.statut).removeClass('hasError');
         }
     }
-    
-   
+
+
 
 
     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
