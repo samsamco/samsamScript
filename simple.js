@@ -627,8 +627,7 @@ $('.telecharger').click(function () {
 
     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
 
-
-
+        console.log(123);
 
         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
 
@@ -637,6 +636,7 @@ $('.telecharger').click(function () {
                 $('#errors-simulate').append('' + errors[i] + '</br>');
             }
             $('#errors-simulate').show();
+            console.log(12374);
         }
         return;
     }
@@ -1111,14 +1111,3 @@ function addCommas(nStr) {
     }
     return x1 + x2;
 }
-
-
-
-
-
-
-
-
-
-
-
