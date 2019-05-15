@@ -87,6 +87,10 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     {
         source = 'simulationscpigouv';
     }
+    else if($(elm).hasClass('simulationassur'))
+    {
+        source = 'simulationassur';
+    }
     else if($(elm).hasClass('download_ebook'))
     {
         source = 'download_ebook';
@@ -270,7 +274,7 @@ function validersms(newcode,urlhref=null) {
 
                 switch (localStorage.getItem('source')) {
 
-                    case "simulateur":
+                    case "simulationassur":
 
                         $('header').removeClass('etape1');
                         $('header').removeClass('etape2');
