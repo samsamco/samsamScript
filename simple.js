@@ -620,6 +620,8 @@ $('.telecharger').click(function () {
         }
     }
 
+    console.log(ifnom+" "+ifemail+" "+ifgsm+" "+ifage+" "+ifstatut);
+
 
 
 
