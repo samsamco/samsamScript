@@ -111,6 +111,10 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     {
         source = 'redirecttoamf';
     }
+    else if($(elm).hasClass('rdv'))
+    {
+        source = 'rdv';
+    }
 
 
 
