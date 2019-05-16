@@ -206,6 +206,9 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                             alert('Veuillez insérer un numéro de téléphone valide');
 
+			   $('#errors-simulate').text("Veuillez insérer un numéro de téléphone valide");
+        		   $('#errors-simulate').show();
+
                             resulat = false;
 
                         }
