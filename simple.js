@@ -171,7 +171,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                             localStorage.setItem('smssent', 1);
                             localStorage.setItem('smsvalide', 0);
 
-                            $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+                            //$(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
+
                             $('#gsm').val('');
 
                             $('.modal').modal('hide');
