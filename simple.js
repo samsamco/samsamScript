@@ -1122,6 +1122,22 @@ $('.montant:not(.firstmont)').on('keydown',function (event) {
 });
 
 
+
+
+
+$('[name=nom] , [name=email] , [name=gsm]').on('keydown',function (event) {
+
+    if (event.keyCode === 13) {
+        console.log('ok')
+
+        // event.preventDefault();
+        $(".telecharger").click();
+    }
+
+
+});
+
+
 $('form').on('submit',function (event) {
 
     return false
