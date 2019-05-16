@@ -551,7 +551,7 @@ $('.telecharger').click(function () {
     statut = null
     nbenfant = null
 
-    $(this).find('.spinner-border.spinner-border-sm').removeClass('d-none');
+    $(this).find('.spinner-border').removeClass('d-none');
 
     var form = $(this).closest('form').get(0);
     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
