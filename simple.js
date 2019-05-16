@@ -289,6 +289,23 @@ function validersms(newcode,urlhref=null) {
 
                         $('.resultatfinal').removeClass('d-none');
 
+
+			$('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
+                    $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').parent().addClass('p-3');
+                    $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                    $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').removeClass('d-flex');
+
+                    $('.mobileetape3.text-center button').removeClass('d-flex');
+                    $('.mobileetape3.text-center button').addClass('d-none');
+
+                    document.getElementsByTagName('header')[0].classList.remove('etape1');
+                    document.getElementsByTagName('header')[0].classList.remove('etape2');
+                    document.getElementsByTagName('header')[0].classList.add('etape3');
+                    document.getElementsByClassName('rowsimul')[0].classList.add('d-none');
+                    document.getElementsByClassName('resultatfinal')[0].classList.remove('d-none');
+				
+
+
                         break;
 
                     case "rdv":
