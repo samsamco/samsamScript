@@ -158,6 +158,9 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                 localStorage.setItem('codegen', codegen);
 
+		$('#errors-simulate').html(null);
+        	$('#errors-simulate').hide();
+
                 //console.log(codegen);
 
                 $.ajax({
