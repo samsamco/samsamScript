@@ -1097,7 +1097,19 @@ $('.f2 input').on('keydown',function (event) {
 
 });
 
-$('.formPopup input , .montant:not(.firstmont)').on('keydown',function (event) {
+$('.formPopup input ').on('keydown',function (event) {
+
+    if (event.keyCode === 13) {
+        console.log('ok')
+
+        // event.preventDefault();
+        $(".telecharger").click();
+    }
+
+
+});
+
+$('.montant:not(.firstmont)').on('keydown',function (event) {
 
     if (event.keyCode === 13) {
         console.log('ok')
