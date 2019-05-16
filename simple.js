@@ -280,21 +280,21 @@ function validersms(newcode,urlhref=null) {
 
                     case "simulationassur":
 
-                        $('header').removeClass('etape1');
-                        $('header').removeClass('etape2');
-                        $('header').addClass('etape3');
+                          $('header').removeClass('etape1');
+                    $('header').removeClass('etape2');
+                    $('header').addClass('etape3');
 
 
-                        $('.rowsimul').addClass('d-none');
+                    $('.rowsimul').addClass('d-none');
 
-                        $('.resultatfinal').removeClass('d-none');
+                    $('.resultatfinal').removeClass('d-none');
 
 
-			$('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
+                    $('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
                     $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').parent().addClass('p-3');
                     $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
                     $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').removeClass('d-flex');
-
+                    $('.modal bgyellow  d-flex align-items-center w-75 mx-auto my-3').addClass('d-none');
                     $('.mobileetape3.text-center button').removeClass('d-flex');
                     $('.mobileetape3.text-center button').addClass('d-none');
 
