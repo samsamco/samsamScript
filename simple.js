@@ -116,8 +116,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
         source = 'rdv';
     }
 
-	$('#errors-simulate').html(null);
-        $('#errors-simulate').hide();
+    $('#errors-simulate').html(null);
+    $('#errors-simulate').hide();
 
 
 
@@ -162,7 +162,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                 localStorage.setItem('codegen', codegen);
 
-	
+
                 //console.log(codegen);
 
                 $.ajax({
@@ -206,8 +206,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                             alert('Veuillez insérer un numéro de téléphone valide');
 
-			   $('#errors-simulate').text("Veuillez insérer un numéro de téléphone valide");
-        		   $('#errors-simulate').show();
+                            $('#errors-simulate').text("Veuillez insérer un numéro de téléphone valide");
+                            $('#errors-simulate').show();
 
                             resulat = false;
 
@@ -685,7 +685,8 @@ $('.telecharger').click(function () {
     }
 
 
-
+    $('#errors-simulate').html('');
+    $('#errors-simulate').hide();
 
 
     insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
@@ -1100,7 +1101,7 @@ $('.f2 input').on('keydown',function (event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         $(".telecharger").click();
- 
+
     }
 
 
