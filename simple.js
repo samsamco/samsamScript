@@ -49,7 +49,7 @@ function changerPhoneCRM(id, newphone) {
         async: true,
         data: {
             "updatetel": true,
-            "id": localStorage.getItem('id'),
+            "id": id,
             "tel": newphone,
             "updatetelsource": landing_page_source
         },
@@ -739,18 +739,23 @@ $('.renvoyer2').click(function () {
 
     var id = localStorage.getItem('id');
     var newphone = $('#newphone').val();
+    
+    $('#smssecond').modal('hide');
+    $('#smsfirst').modal('show');
+    
     changerPhoneCRM(id, newphone);
+    
+    
 
     var codegen = Math.floor(1000 + Math.random() * 9000);
 
     localStorage.setItem('codegen', codegen);
 
     var tel = localStorage.getItem('tel');
+    
     renvoyerSMS(codegen, tel, $(this));
 
-    $('#smssecond').modal('hide');
-    $('#smsfirst').modal('show');
-
+   
 });
 
 
