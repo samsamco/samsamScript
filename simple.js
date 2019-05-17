@@ -658,7 +658,7 @@ $('.telecharger').click(function () {
         }
     }
 
-    console.log(ifnom+" "+ifemail+" "+ifgsm+" "+ifage+" "+ifstatut);
+    
 
 
 
@@ -673,7 +673,7 @@ $('.telecharger').click(function () {
             for (var i = 0, l = errors.length; i < l; i++) {
                 $('#errors-simulate').append('' + errors[i] + '</br>');
             }
-            $('#errors-simulate').show();
+            //$('#errors-simulate').show();
             console.log(12374);
         }
         return;
