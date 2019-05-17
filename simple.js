@@ -540,7 +540,7 @@ $.fn.extend({
 
 $('.telecharger').click(function () {
 
-    $(this).find('.spinner-border').removeClass('d-none');
+    $('.telecharger .spinner-border').removeClass('d-none');
 
 //     if (!$(this).hasClass('has-icon')) {
 //         $('#errors-simulate').html(null);
