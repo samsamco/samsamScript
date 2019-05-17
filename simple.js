@@ -542,154 +542,159 @@ $('.telecharger').click(function () {
 
     $(this).find('.spinner-border').removeClass('d-none');
 
-//     if (!$(this).hasClass('has-icon')) {
-//         $('#errors-simulate').html(null);
-//         $('#errors-simulate').hide();
-//     }
+    if (!$(this).hasClass('has-icon')) {
+        $('#errors-simulate').html(null);
+        $('#errors-simulate').hide();
+    }
 
-//     var errors = [];
-//     age = null
-//     statut = null
-//     nbenfant = null
-
-
-//     var form = $(this).closest('form').get(0);
-//     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
-//     var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
-//     var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
-//     var tranche = $('#selectInput').val();
+    var errors = [];
+    age = null
+    statut = null
+    nbenfant = null
 
 
-//     var age  =form.age!=null && form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
-//     var statut = form.statut!=null && form.statut.value.trim()!="" ? form.statut.value:null;
-//     var nbenfant = form.nbenfant!=null && form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
+    var form = $(this).closest('form').get(0);
+    var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
+    var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
+    var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
+    var tranche = $('#selectInput').val();
 
 
-
-//     ifnom = true;
-//     ifemail = true;
-//     ifgsm = true;
-//     ifage = true;
-//     ifstatut = true;
+    var age  =form.age!=null && form.age.value.trim()!="" && !isNaN(form.age.value) ? form.age.value:null;
+    var statut = form.statut!=null && form.statut.value.trim()!="" ? form.statut.value:null;
+    var nbenfant = form.nbenfant!=null && form.nbenfant.value.trim()!="" ? form.nbenfant.value:0;
 
 
 
-//     if ($(this).hasClass('has-icon')) {
+    ifnom = true;
+    ifemail = true;
+    ifgsm = true;
+    ifage = true;
+    ifstatut = true;
 
-//         if (nom == null || nom == '') {
-//             $(form.nom).parent().addClass('hasError');
-//             $(form.nom).parent().animateCss('shake');
-//             ifnom = false;
-//             errors.push('Remplir le nom');
-//         } else {
-//             $(form.nom).parent().removeClass('hasError');
-//         }
 
-//         if (email == null || email == '') {
-//             $(form.email).parent().addClass('hasError');
-//             $(form.email).parent().animateCss('shake');
-//             ifemail = false;
-//             console.log(email)
-//             errors.push('Remplir l\'email');
-//         } else {
-//             $(form.email).parent().removeClass('hasError');
-//         }
 
-//         if (gsm == null || gsm == '') {
-//             $(form.gsm).parent().addClass('hasError');
-//             $(form.gsm).parent().animateCss('shake');
-//             ifgsm = false;
-//             errors.push('Remplir le télephone');
-//         } else {
-//             $(form.gsm).parent().removeClass('hasError');
-//         }
+    if ($(this).hasClass('has-icon')) {
 
-//     } else {
+        if (nom == null || nom == '') {
+            $(form.nom).parent().addClass('hasError');
+            $(form.nom).parent().animateCss('shake');
+            ifnom = false;
+            errors.push('Remplir le nom');
+        } else {
+            $(form.nom).parent().removeClass('hasError');
+        }
 
-//         if (nom == null || nom == '') {
-//             $(form.nom).addClass('hasError');
-//             $(form.nom).animateCss('shake');
-//             ifnom = false;
-//             errors.push('Remplir le nom');
+        if (email == null || email == '') {
+            $(form.email).parent().addClass('hasError');
+            $(form.email).parent().animateCss('shake');
+            ifemail = false;
+            console.log(email)
+            errors.push('Remplir l\'email');
+        } else {
+            $(form.email).parent().removeClass('hasError');
+        }
+
+        if (gsm == null || gsm == '') {
+            $(form.gsm).parent().addClass('hasError');
+            $(form.gsm).parent().animateCss('shake');
+            ifgsm = false;
+            errors.push('Remplir le télephone');
+        } else {
+            $(form.gsm).parent().removeClass('hasError');
+        }
+
+    } else {
+
+        if (nom == null || nom == '') {
+            $(form.nom).addClass('hasError');
+            $(form.nom).animateCss('shake');
+            ifnom = false;
+            errors.push('Remplir le nom');
+            console.log('n')
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
+        } else {
+            $(form.nom).removeClass('hasError');
+        }
+
+        if (email == null || email == '') {
+            $(form.email).addClass('hasError');
+            $(form.email).animateCss('shake');
+            ifemail = false;
+            errors.push('Remplir l\'email');
+            console.log('n')
+
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
+        } else {
+            $(form.email).removeClass('hasError');
+        }
+
+        if (gsm == null || gsm == '' ) {
+            $(form.gsm).addClass('hasError');
+            $(form.gsm).animateCss('shake');
+            ifgsm = false;
+            errors.push('Remplir le télephone');
+            console.log('n')
+
+            $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
+        } else {
+            $(form.gsm).removeClass('hasError');
+        }
+
+
+        if (age == null || age == '' ) {
+            $(form.age).addClass('hasError');
+            $(form.age).animateCss('shake');
+            ifage = false;
+            errors.push('Remplir l\'age');
 //             $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-//         } else {
-//             $(form.nom).removeClass('hasError');
-//         }
+        } else {
+            $(form.age).removeClass('hasError');
+        }
 
-//         if (email == null || email == '') {
-//             $(form.email).addClass('hasError');
-//             $(form.email).animateCss('shake');
-//             ifemail = false;
-//             errors.push('Remplir l\'email');
+        if (statut == null || statut == '' ) {
+            $(form.statut).addClass('hasError');
+            $(form.statut).animateCss('shake');
+            ifstatut = false;
+            errors.push('Remplir le statut');
 //             $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-//         } else {
-//             $(form.email).removeClass('hasError');
-//         }
-
-//         if (gsm == null || gsm == '' ) {
-//             $(form.gsm).addClass('hasError');
-//             $(form.gsm).animateCss('shake');
-//             ifgsm = false;
-//             errors.push('Remplir le télephone');
-//             $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-//         } else {
-//             $(form.gsm).removeClass('hasError');
-//         }
-
-
-//         if (age == null || age == '' ) {
-//             $(form.age).addClass('hasError');
-//             $(form.age).animateCss('shake');
-//             ifage = false;
-//             errors.push('Remplir l\'age');
-//             $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-//         } else {
-//             $(form.age).removeClass('hasError');
-//         }
-
-//         if (statut == null || statut == '' ) {
-//             $(form.statut).addClass('hasError');
-//             $(form.statut).animateCss('shake');
-//             ifstatut = false;
-//             errors.push('Remplir le statut');
-//             $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
-//         } else {
-//             $(form.statut).removeClass('hasError');
-//         }
-//     }
+        } else {
+            $(form.statut).removeClass('hasError');
+        }
+    }
 
     
 
 
 
 
-//     if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
+    if (ifgsm == false || ifnom == false || ifemail == false || (form.age!=null && (ifage == false || ifstatut == false ) )) {
 
-//         console.log(123);
+        console.log(123);
 
-//         $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
+        $(this).find('.spinner-border.spinner-border-sm').addClass('d-none');
 
-//         if (!$(this).hasClass('has-icon')) {
-//             for (var i = 0, l = errors.length; i < l; i++) {
-//                 $('#errors-simulate').append('' + errors[i] + '</br>');
-//             }
-//             //$('#errors-simulate').show();
-//             console.log(12374);
-//         }
-//         return;
-//     }
+        if (!$(this).hasClass('has-icon')) {
+            for (var i = 0, l = errors.length; i < l; i++) {
+                $('#errors-simulate').append('' + errors[i] + '</br>');
+            }
+            //$('#errors-simulate').show();
+            console.log(12374);
+        }
+        return;
+    }
 
-//     if (!$(this).hasClass('has-icon')) {
-//         $('#errors-simulate').html(null);
-//         $('#errors-simulate').hide();
-//     }
-
-
-//     $('#errors-simulate').html('');
-//     $('#errors-simulate').hide();
+    if (!$(this).hasClass('has-icon')) {
+        $('#errors-simulate').html(null);
+        $('#errors-simulate').hide();
+    }
 
 
-    //insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
+    $('#errors-simulate').html('');
+    $('#errors-simulate').hide();
+
+
+    insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
 });
 
