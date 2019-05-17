@@ -541,6 +541,8 @@ $.fn.extend({
 
 $('.telecharger').click(function () {
 
+    $(this).find('.spinner-border').removeClass('d-none');
+
     if (!$(this).hasClass('has-icon')) {
         $('#errors-simulate').html(null);
         $('#errors-simulate').hide();
@@ -551,7 +553,6 @@ $('.telecharger').click(function () {
     statut = null
     nbenfant = null
 
-    $(this).find('.spinner-border').removeClass('d-none');
 
     var form = $(this).closest('form').get(0);
     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
@@ -689,7 +690,7 @@ $('.telecharger').click(function () {
     $('#errors-simulate').hide();
 
 
-    insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
+    //insertlead(nom, gsm, email, age , statut , nbenfant , checkIfAnalyticsLoaded2, daterdv = null, landing_page_source, ID_google_analytic, $(this), tranche);
 
 });
 
