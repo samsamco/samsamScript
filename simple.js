@@ -241,6 +241,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                 "client_id": checkIfAnalyticsLoaded2(),
                 "name": nom,
                 "email": email,
+                "ville": City,
+                "code_postal": Zip,
                 "phone": tel,
                 "view_id": ID_google_View
             },
