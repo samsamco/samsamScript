@@ -118,7 +118,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     $('#errors-simulate').html(null);
     $('#errors-simulate').hide();
 
-    var form = $(elm).closest('form');
+    form = $(elm).closest('form').get(0);
+    console.log(form)
 
 
 
@@ -220,10 +221,10 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                         console.log('Message error sms');
 
                 
-                    if ($(form.gsm).hasClass('has-icon')) {
+                    if ($(elm).hasClass('has-icon')) {
                             $(form.gsm).parent().addClass('hasError');
                             $(form.gsm).parent().animateCss('shake');
-                            console.log('no has calss')
+                            console.log('has calss')
                      
                     } else {
                             $(form.gsm).addClass('hasError');
