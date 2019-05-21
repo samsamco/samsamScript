@@ -577,12 +577,14 @@ $('.telecharger').click(function () {
     age = null
     statut = null
     nbenfant = null
+    
+    var re = /^((\+)33|0)(6|7)(\d{2}){4}$/g;
 
 
     var form = $(this).closest('form').get(0);
     var nom = form.nom.value != null && form.nom.value.trim() != "" ? form.nom.value : null;
     var email = form.email.value != null && form.email.value.trim() != "" && regexEmail.test(form.email.value.toLowerCase()) ? form.email.value : null;
-    var gsm = form.gsm.value != null && form.gsm.value.trim() != ""  ? form.gsm.value : null;
+    var gsm = form.gsm.value != null && form.gsm.value.trim() != "" && re.test(form.gsm.value)  ? form.gsm.value : null;
     var tranche = $('#selectInput').val();
 
 
