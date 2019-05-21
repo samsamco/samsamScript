@@ -118,7 +118,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     $('#errors-simulate').html(null);
     $('#errors-simulate').hide();
 
-
+    var form = $(elm).closest('form');
 
 
 
@@ -198,7 +198,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                         {
                             $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
 
-                            var form = $(elm).closest('form');
+                            
 
                             $(form.gsm).addClass('hasError');
                             $(form.gsm).animateCss('shake');
