@@ -218,8 +218,22 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                     error: function(jqXHR, textStatus, errorThrown) {
                         $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
                         console.log('Message error sms');
-                        $(form.gsm).addClass('hasError');
-                        $(form.gsm).animateCss('shake');
+
+                
+                    if ($(elm).hasClass('has-icon')) {
+                            $(form.gsm).parent().addClass('hasError');
+                            $(form.gsm).parent().animateCss('shake');
+                            console.log('no has calss')
+                     
+                    } else {
+                            $(form.gsm).addClass('hasError');
+                            $(form.gsm).animateCss('shake');
+                            console.log('no has calss')
+                    }
+                    
+                        
+                                                                                            
+                        
                     }
                 })
 
