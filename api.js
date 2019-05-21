@@ -12,7 +12,7 @@ function sendTracking_Api(Userip,ID_google_analytic) {
 
     gtag('config', ID_google_analytic, {
         'custom_map': {
-            'dimension1': 'clientId',
+            'dimension1': 'Token',
             'dimension2': 'Token',
             'dimension3': 'Userip',
             'metric1': 'avg_page_load_time'
