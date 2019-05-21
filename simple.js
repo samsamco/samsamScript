@@ -344,6 +344,13 @@ function validersms(newcode,urlhref=null) {
                         document.getElementsByClassName('resultatfinal')[0].classList.remove('d-none');
 
 
+                        $('#rmc1').text((localStorage.getItem('placement')*0.018).toFixed(2)+ " €");
+                        $('#rmc2').text((localStorage.getItem('placement')*0.06).toFixed(2)+ " €");
+
+                        $('#ra1').text((localStorage.getItem('placement')*0.018*12).toFixed(2)+ " €");
+                        $('#ra2').text((localStorage.getItem('placement')*0.06*12).toFixed(2)+ " €");
+
+
 
                         break;
 
