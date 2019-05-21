@@ -216,6 +216,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                     }
                     ,
                     error: function(jqXHR, textStatus, errorThrown) {
+                        $(elm).find('.spinner-border.spinner-border-sm').addClass('d-none');
                         console.log('Message error sms');
                         $(form.gsm).addClass('hasError');
                         $(form.gsm).animateCss('shake');
