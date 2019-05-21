@@ -220,7 +220,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                         console.log('Message error sms');
 
                 
-                    if ($(elm).hasClass('has-icon')) {
+                    if ($(form.gsm).hasClass('has-icon')) {
                             $(form.gsm).parent().addClass('hasError');
                             $(form.gsm).parent().animateCss('shake');
                             console.log('no has calss')
