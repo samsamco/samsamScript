@@ -214,6 +214,11 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                         }
                     }
+                    ,
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        $(form.gsm).addClass('hasError');
+                        $(form.gsm).animateCss('shake');
+                    }
                 })
 
             } else {
@@ -667,7 +672,7 @@ $('.telecharger').click(function () {
         }
     }
 
-    
+
 
 
 
@@ -743,23 +748,23 @@ $('.renvoyer2').click(function () {
 
     var id = localStorage.getItem('id');
     var newphone = $('#newphone').val();
-    
+
     $('#smssecond').modal('hide');
     $('#smsfirst').modal('show');
-    
+
     changerPhoneCRM(id, newphone);
-    
-    
+
+
 
     var codegen = Math.floor(1000 + Math.random() * 9000);
 
     localStorage.setItem('codegen', codegen);
 
     var tel = localStorage.getItem('tel');
-    
+
     renvoyerSMS(codegen, tel, $(this));
 
-   
+
 });
 
 
