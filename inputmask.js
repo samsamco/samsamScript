@@ -7,7 +7,7 @@ $('.phonenumber').keyup(function (e) {
         
 
         if($phone.val().charAt(1) != 6 && $phone.val().charAt(1) != 7)
-            $("#phone-number").val('0');
+            $(".phonenumber").val('0');
 
     }
 
