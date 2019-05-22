@@ -37,7 +37,7 @@ var regexSms = /^((\+)33|0)(6|7)(\d{2}){4}$/g;
 function checkIfAnalyticsLoaded2() {
     if (window.ga && ga.create) {
         // return ga.getAll()[0].get('clientId');
-        return new Date().getTime();
+        return Token;
     } else {
         return "notshow-" + new Date().getTime();
     }
