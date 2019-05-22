@@ -2,7 +2,7 @@
 
 function sendTracking_Api(Userip,ID_google_analytic) {
 
-    Token = new Date().getTime();
+    // Token = new Date().getTime();
 
     console.log(Userip+" "+ID_google_analytic+" "+Token)
 
