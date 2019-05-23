@@ -1079,42 +1079,42 @@ function toolTipFormatter(e) {
 }
 
 
-$('#selectInput').change(function () {
+// $('#selectInput').change(function () {
 
-    //console.log(localStorage.getItem('id'));
-    //console.log(localStorage.getItem('smsvalide'));
+//     //console.log(localStorage.getItem('id'));
+//     //console.log(localStorage.getItem('smsvalide'));
 
-    if ($(this).val() != 0) {
+//     if ($(this).val() != 0) {
 
-        if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
+//         if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
 
-            if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
-                $('#not-eligible').show();
-                $('#eligible').hide();
-            } else {
-                $('#not-eligible').hide();
-                $('#eligible').show();
-            }
+//             if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
+//                 $('#not-eligible').show();
+//                 $('#eligible').hide();
+//             } else {
+//                 $('#not-eligible').hide();
+//                 $('#eligible').show();
+//             }
 
-            $('#response_eligibility').modal('show');
+//             $('#response_eligibility').modal('show');
 
-        }
+//         }
 
-        if((localStorage.getItem('id') == undefined || localStorage.getItem('id') == null) && localStorage.getItem('smsvalide') == undefined
-        ){
+//         if((localStorage.getItem('id') == undefined || localStorage.getItem('id') == null) && localStorage.getItem('smsvalide') == undefined
+//         ){
 
-            $("#selectInputModal").modal('show');
+//             $("#selectInputModal").modal('show');
 
-        }
+//         }
 
-        if(localStorage.getItem('id') != undefined && localStorage.getItem('smsvalide') == 0){
-            $('#smsfirst').modal('show');
+//         if(localStorage.getItem('id') != undefined && localStorage.getItem('smsvalide') == 0){
+//             $('#smsfirst').modal('show');
 
-        }
+//         }
 
-    }
+//     }
 
-});
+// });
 
 
 $('.readlink').click(function () {
