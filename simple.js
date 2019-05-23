@@ -1116,6 +1116,41 @@ function toolTipFormatter(e) {
 
 // });
 
+$('#selectInput').change(function () {
+
+    if ($(this).val() != 0) {
+
+        if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
+            $("#response_not_eligibility").modal('show');
+        }
+
+        if(localStorage.getItem('id') != null && localStorage.getItem('smsvalide') == '1'){
+
+            if ($('#selectInput').val() != 1 || $('#selectInput').val() != '1') {
+                $('#response_eligibility').modal('show');
+            }
+
+        }
+
+        if((localStorage.getItem('id') == undefined || localStorage.getItem('id') == null) && localStorage.getItem('smsvalide') == undefined
+        ){
+            if($(this).val() == 1 || $(this).val() == '1'){
+                $("#response_not_eligibility").modal('show');
+            }else{
+                $("#selectInputModal").modal('show');
+            }
+
+        }
+
+        if(localStorage.getItem('id') != undefined && localStorage.getItem('smsvalide') == 0){
+            $('#smsfirst').modal('show');
+
+        }
+
+    }
+
+});
+
 
 $('.readlink').click(function () {
 
