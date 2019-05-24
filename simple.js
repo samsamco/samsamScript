@@ -323,17 +323,15 @@ function validersms(newcode,urlhref=null) {
                         $('header').removeClass('etape2');
                         $('header').addClass('etape3');
 
-
                         $('.rowsimul').addClass('d-none');
 
                         $('.resultatfinal').removeClass('d-none');
-
 
                         $('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
                         $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').parent().addClass('p-3');
                         $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
                         $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').removeClass('d-flex');
-                        $('.modal bgyellow  d-flex align-items-center w-75 mx-auto my-3').addClass('d-none');
+                        $('.modal  .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
                         $('.mobileetape3.text-center button').removeClass('d-flex');
                         $('.mobileetape3.text-center button').addClass('d-none');
 
@@ -343,18 +341,41 @@ function validersms(newcode,urlhref=null) {
                         document.getElementsByClassName('rowsimul')[0].classList.add('d-none');
                         document.getElementsByClassName('resultatfinal')[0].classList.remove('d-none');
 
+                        $('#rmc1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018).toFixed(2))) + " €");
+                        $('#rmc2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06).toFixed(2))) + " €");
 
-                        $('#rmc1').text((localStorage.getItem('placement')*0.018).toFixed(2)+ " €");
-                        $('#rmc2').text((localStorage.getItem('placement')*0.06).toFixed(2)+ " €");
+                        $('#ra1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018*12).toFixed(2))) + " €");
+                        $('#ra2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06*12).toFixed(2))) + " €");
 
-                        $('#ra1').text((localStorage.getItem('placement')*0.018*12).toFixed(2)+ " €");
-                        $('#ra2').text((localStorage.getItem('placement')*0.06*12).toFixed(2)+ " €");
+                        $('.l1').attr('href','http://lascpi.fr');
+                        $('.l2').attr('href','https://payez-dimpot.fr/simulateur-pinel');
 
+                        $('.l1 , .l2').attr('target','_blank');
+                        $('.l1 , .l2').removeAttr('data-target');
+
+                        $('.tooltip button').remove();
 
 
                         break;
 
                     case "rdv":
+
+
+                        $('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').parent().addClass('p-3');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').removeClass('d-flex');
+                        $('.modal  .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                        $('.mobileetape3.text-center button').removeClass('d-flex');
+                        $('.mobileetape3.text-center button').addClass('d-none');
+
+                        $('.l1').attr('href','http://lascpi.fr');
+                        $('.l2').attr('href','https://payez-dimpot.fr/simulateur-pinel');
+
+                        $('.l1 , .l2').attr('target','_blank');
+                        $('.l1 , .l2').removeAttr('data-target');
+
+                        $('.tooltip button').remove();
 
                         $('#modalsuccess').modal('show');
 
