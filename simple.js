@@ -340,12 +340,12 @@ function validersms(newcode,urlhref=null) {
                         document.getElementsByTagName('header')[0].classList.add('etape3');
                         document.getElementsByClassName('rowsimul')[0].classList.add('d-none');
                         document.getElementsByClassName('resultatfinal')[0].classList.remove('d-none');
+                        
+                        $('#rmc1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018*12).toFixed(2))) + " €");
+                        $('#rmc2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06*12).toFixed(2))) + " €");
 
-                        $('#rmc1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018).toFixed(2))) + " €");
-                        $('#rmc2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06).toFixed(2))) + " €");
-
-                        $('#ra1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018*12).toFixed(2))) + " €");
-                        $('#ra2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06*12).toFixed(2))) + " €");
+                        $('#ra1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018*12*8).toFixed(2))) + " €");
+                        $('#ra2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06*12*8).toFixed(2))) + " €");
 
                         $('.l1').attr('href','http://lascpi.fr');
                         $('.l2').attr('href','https://payez-dimpot.fr/simulateur-pinel');
