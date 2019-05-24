@@ -507,7 +507,6 @@ function validersms(newcode,urlhref=null) {
 
                         window.open('https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier','_blank');
 
-
                 }
 
             }
