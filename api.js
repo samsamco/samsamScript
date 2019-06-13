@@ -68,6 +68,14 @@ function sendFbConversion_Api(ID_faceboo_Ad ) {
 
 // })
 
+//---------Microsoft conversion-------
+
+function SendMicrosoftTracking() {
+    window.uetq = window.uetq || [];
+    window.uetq.push({ 'click-button': '3', 'pagetype': 'cart' });
+}
+
+
 
 
 
