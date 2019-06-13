@@ -77,10 +77,3 @@ function SendMicrosoftTracking() {
 
 
 
-
-
-
-
-
-
-
