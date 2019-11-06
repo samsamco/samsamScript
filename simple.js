@@ -870,8 +870,26 @@ $('.calculer').click(function(){
 
     var montant = $('.montant').val();
     var rendement = $('.rendement').val();
+	
+	
+	$('.underline .col').removeClass('bg-red');
+            $('.underline .col').addClass('bg_darkblue');
 
-    if(montant!=null && montant!=""  && !isNaN(montant) && rendement!=null && rendement!="") {
+            $('.underline .col:last-child').removeClass('bg_darkblue');
+            $('.underline .col:last-child').addClass('bg-red');
+
+            $('.sumulateur_content').addClass('d-none');
+            $('.part_3').removeClass('d-none');
+
+            calculer();
+
+            $('#rc').text(addCommas(res.Rc)+' €');
+            $('#br').text(addCommas(res.Br)+' €');
+            $('#ccp').text(addCommas(res.cpp)+' €');
+
+            $('.montant , .rendement').removeClass('hasError');
+
+   /* if(montant!=null && montant!=""  && !isNaN(montant) && rendement!=null && rendement!="") {
 
         localStorage.setItem('montant',montant);
         localStorage.setItem('rendement',rendement);
@@ -929,7 +947,7 @@ $('.calculer').click(function(){
             $('.rendement').animateCss('shake');
             $('.rendement').addClass('hasError');
         }
-    }
+    }*/
 })
 
 
