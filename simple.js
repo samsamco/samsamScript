@@ -168,7 +168,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
                 //console.log(codegen);
 
-                $.ajax({
+                /*$.ajax({
                     url: "https://payez-dimpot.fr/sms/web/api/send-sms",
                     method: "post",
                     data: {"code": codegen, "phone": tel.replace(/^0/gi, "+33")},
@@ -237,7 +237,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                                                                                             
                         
                     }
-                })
+                })*/
 
             } else {
 
@@ -290,16 +290,8 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 }
 
 function validersms(newcode,urlhref=null) {
-
-    if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
-
-        if (newcode != localStorage.getItem('codegen')) {
-            $('.errorwrapper').text('Le code inséré n\'est pas valide');
-            return false;
-
-        }else{
-
-            localStorage.setItem('smsvalide',1);
+	
+	localStorage.setItem('smsvalide',1);
 
             $('#smsfirst').modal('hide');
             $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
@@ -511,11 +503,21 @@ function validersms(newcode,urlhref=null) {
 
             }
 
+    /*if (localStorage.getItem('smssent') == 1 && localStorage.getItem('codegen') != "") {
+
+        if (newcode != localStorage.getItem('codegen')) {
+            $('.errorwrapper').text('Le code inséré n\'est pas valide');
+            return false;
+
+        }else{
+
+            
+
 
         }
     } else {
 
-    }
+    }*/
 
 }
 
