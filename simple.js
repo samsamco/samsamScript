@@ -164,6 +164,219 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
                 var codegen = Math.floor(1000 + Math.random() * 9000);
 
                 localStorage.setItem('codegen', codegen);
+				
+				
+				localStorage.setItem('smsvalide',1);
+
+            $('#smsfirst').modal('hide');
+            $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+            $('[data-target*=modallivre]').attr('target','_blank');
+            $('[data-target*=modalapplication]').attr('href','https://play.google.com/store/apps/details?id=scpi.simulateur.co');
+            $('[data-target*=modalapplication]').attr('target','_blank');
+            $('[data-target*=modalportail]').attr('href','https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier');
+            $('[data-target*=modalportail]').attr('target','_blank');
+            $('[data-target]').removeAttr('data-target');
+            $('[data-toggle]').removeAttr('data-toggle');
+
+            if (localStorage.getItem('source') != null) {
+
+                $('.modal').modal('hide');
+
+                switch (localStorage.getItem('source')) {
+
+                    case "simulationassur":
+
+                        $('header').removeClass('etape1');
+                        $('header').removeClass('etape2');
+                        $('header').addClass('etape3');
+
+                        $('.rowsimul').addClass('d-none');
+
+                        $('.resultatfinal').removeClass('d-none');
+
+                        $('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').parent().addClass('p-3');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').removeClass('d-flex');
+                        $('.modal  .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                        $('.mobileetape3.text-center button').removeClass('d-flex');
+                        $('.mobileetape3.text-center button').addClass('d-none');
+
+                        document.getElementsByTagName('header')[0].classList.remove('etape1');
+                        document.getElementsByTagName('header')[0].classList.remove('etape2');
+                        document.getElementsByTagName('header')[0].classList.add('etape3');
+                        document.getElementsByClassName('rowsimul')[0].classList.add('d-none');
+                        document.getElementsByClassName('resultatfinal')[0].classList.remove('d-none');
+                        
+                        $('#rmc1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018*12).toFixed(2))) + " €");
+                        $('#rmc2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06*12).toFixed(2))) + " €");
+
+                        $('#ra1').text( addCommas(Math.round((localStorage.getItem('placement')*0.018*12*8).toFixed(2))) + " €");
+                        $('#ra2').text( addCommas(Math.round((localStorage.getItem('placement')*0.06*12*8).toFixed(2))) + " €");
+
+                        $('.l1').attr('href','http://lascpi.fr');
+                        $('.l2').attr('href','https://payez-dimpot.fr/simulateur-pinel');
+
+                        $('.l1 , .l2').attr('target','_blank');
+                        $('.l1 , .l2').removeAttr('data-target');
+
+                        $('.tooltip button').remove();
+
+
+                        break;
+
+                    case "rdv":
+
+
+                        $('[data-toggle=prendrerdv]').attr('data-toggle','modalsuccess');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').parent().addClass('p-3');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                        $('.modal .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').removeClass('d-flex');
+                        $('.modal  .bgyellow.d-flex.align-items-center.w-75.mx-auto.my-3').addClass('d-none');
+                        $('.mobileetape3.text-center button').removeClass('d-flex');
+                        $('.mobileetape3.text-center button').addClass('d-none');
+
+                        $('.l1').attr('href','http://lascpi.fr');
+                        $('.l2').attr('href','https://payez-dimpot.fr/simulateur-pinel');
+
+                        $('.l1 , .l2').attr('target','_blank');
+                        $('.l1 , .l2').removeAttr('data-target');
+
+                        $('.tooltip button').remove();
+
+                        $('#modalsuccess').modal('show');
+
+                        break;
+
+                    case "download_pinel":
+
+                        // $('[data-toggle=modal]').addClass('directDownload');
+                        // //console.log('smsmsms')
+                        // $('[data-toggle=modal]').removeAttr('data-target');
+                        // $('[data-toggle=modal]').removeAttr('data-toggle');
+                        // $('.modalebook').addClass('directDownload');
+
+                        $('[data-toggle=modal]:not(.readlink)').addClass('directDownload');
+                        $('.readlink').attr('href',$('.readlink').attr('data-href'));
+                        $('[data-toggle=modal]').removeAttr('data-target');
+                        $('[data-toggle=modal]').removeAttr('data-toggle');
+
+
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'https://payez-dimpot.fr/simulateur-pinel/public/livres/Guide-loi-Pinel.pdf');
+                        element.setAttribute('download', 'Guide-loi-Pinel.pdf');
+                        element.setAttribute('target', '_blank');
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                        // if (localStorage.getItem('nom') != null && localStorage.getItem('email') != null && localStorage.getItem('smsvalide') != null) {
+
+                        // }
+
+                        break;
+
+                    case "eligilibity_pinel":
+
+                        $('#selectInputModal').modal('hide');
+
+                        //console.log($('#selectInput').val());
+                        if ($('#selectInput').val() == 1 || $('#selectInput').val() == '1') {
+                            $('#not-eligible').show();
+                            $('#eligible').hide();
+                        } else {
+                            $('#not-eligible').hide();
+                            $('#eligible').show();
+                        }
+
+                        $('#response_eligibility').modal('show');
+
+                        break;
+
+                    case "simulationscpigouv":
+
+
+                        $('.underline .col').removeClass('bg-red');
+                        $('.underline .col').addClass('bg_darkblue');
+
+                        $('.underline .col:last-child').removeClass('bg_darkblue');
+                        $('.underline .col:last-child').addClass('bg-red');
+
+                        $('.sumulateur_content').addClass('d-none');
+                        $('.part_3').removeClass('d-none');
+
+                        $('.col.h-25').remove();
+
+                        $('.col-12.col-md-7').addClass('col-md-6');
+                        $('.col-12.col-md-7').removeClass('col-md-7');
+
+
+                        $('.col-12.col-md-4.text-center.py-3').addClass('col-md-6');
+                        $('.col-12.col-md-4.text-center.py-3').removeClass('col-md-4');
+
+
+                        $('.content').animateCss('fadeOutLeftBig');
+                        $('#chartContainer').removeClass('d-none');
+                        $('#chartContainer').animateCss('fadeInRightBig');
+                        $('.content').addClass('d-none');
+                        $('.content').removeClass('d-md-block');
+
+                        var res = calculer();
+
+                        $('#rc').text(addCommas(res.Rc)+' €');
+                        $('#br').text(addCommas(res.Br)+' €');
+                        $('#ccp').text(addCommas(res.cpp)+' €');
+
+                        $('.montant').val(localStorage.getItem('montant'));
+                        $('.rendement').val(localStorage.getItem('rendement'));
+
+                        setTimeout(function(){simuler(6)},500);
+
+                        break;
+
+                    case "telechargerappstore":
+
+                        window.open('https://play.google.com/store/apps/details?id=scpi.simulateur.co','_blank');
+
+
+                        break;
+
+                    case "telechargerplaystore":
+
+                        window.open('https://play.google.com/store/apps/details?id=scpi.simulateur.co','_blank');
+
+                        break;
+
+
+                    case "download_ebook":
+
+
+                        var element = document.createElement('a');
+                        element.setAttribute('href', 'https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
+                        element.setAttribute('download', 'ReussissezVotreInvestissement.pdf');
+                        element.setAttribute('target', '_blank');
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+
+                        break;
+
+                    case 'link_pinel':
+
+                        window.open(urlhref,'_blank');
+
+                        break;
+
+                    case "redirecttoamf":
+
+                        window.open('https://www.amf-france.org/Epargne-Info-Service/Comprendre-les-produits-financiers/Placements-collectifs/Immobilier','_blank');
+
+                }
+
+            }
 
 
                 //console.log(codegen);
@@ -291,7 +504,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
 function validersms(newcode,urlhref=null) {
 	
-	localStorage.setItem('smsvalide',1);
+			localStorage.setItem('smsvalide',1);
 
             $('#smsfirst').modal('hide');
             $('[data-target*=modallivre]').attr('href','https://lascpi.fr/public/livres/ReussissezVotreInvestissement.pdf');
