@@ -258,7 +258,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
     });
 
 
-    if (!(/test/i.test(nom))) {
+   /* if (!(/test/i.test(nom))) {
         $.ajax({
             url: "https://www.payer-dimpot.com/web/insert-lead",
             method: "post",
@@ -282,7 +282,7 @@ function insertlead(nom, tel, email, age = null, statut = null, nbenfant = null,
 
 
         })
-    }
+    }*/
 
 
 
